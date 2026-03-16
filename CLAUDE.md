@@ -214,7 +214,7 @@ cd ~/workshop-kit && bash setup.sh
 cd ~/workshop-kit && bash setup.sh
 ```
 
-Narrate as setup.sh runs. When complete: "All 16 business skills are now installed."
+Narrate as setup.sh runs. When complete: "All 92 skills are now installed."
 
 ---
 
@@ -397,7 +397,7 @@ Read: `brainstorming.md` + `writing-plans.md`
 
 ---
 
-## Your 16 Skills
+## Your 92 Skills
 
 Located at `~/.claude/skills/`. Read the skill file before performing that task.
 

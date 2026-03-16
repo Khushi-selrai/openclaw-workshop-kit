@@ -31,7 +31,7 @@ openclaw-workshop-kit/
 │       ├── USER.md                  # Onboarding placeholder (status: not-yet-onboarded)
 │       └── SETUP.md                 # Setup status tracker
 │
-├── skills/                          # 16 bundled business skills
+├── skills/                          # 92 bundled business skills
 │   ├── humanizer/
 │   ├── deep-research/
 │   ├── copywriting/

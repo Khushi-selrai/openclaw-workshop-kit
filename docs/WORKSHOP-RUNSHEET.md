@@ -141,7 +141,7 @@
 
 Every person should leave with:
 - [ ] Claude Code installed and logged in
-- [ ] 16 business skills installed
+- [ ] 92 skills installed
 - [ ] Browser automation (Playwright) connected
 - [ ] At least 1 real output from their business (research, email, post)
 - [ ] Memory set up (assistant knows their business)

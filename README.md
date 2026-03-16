@@ -13,7 +13,7 @@ This kit sets up a personal AI business assistant on your laptop. Not a chatbot 
 - **Remembers your business** — your name, your customers, your biggest challenges
 - **Lives on your computer** — runs locally, not in a browser tab
 - **Controls your browser** — can open websites, fill forms, and do research for you
-- **Has 16 specialist skills** — research, copywriting, sales emails, social content, competitor analysis, and more
+- **Has 92 specialist skills** — research, copywriting, sales emails, social content, competitor analysis, and more
 - **Gets smarter over time** — every conversation builds on the last
 
 It is built on [Claude Code](https://claude.ai/claude-code) by Anthropic — the same AI that powers Claude, configured specifically for your business.
@@ -237,7 +237,7 @@ workshop-kit/
 │   └── memory/                  # Where your assistant saves what it learns
 │       ├── USER.md              # Your profile (filled in on first run)
 │       └── SETUP.md             # Setup completion status
-├── skills/                      # 16 business skills (installed to ~/.claude/skills/)
+├── skills/                      # 92 skills (installed to ~/.claude/skills/)
 ├── docs/
 │   ├── PRE-WORKSHOP-CHECKLIST.md   # What to do before arriving
 │   ├── WINDOWS-SETUP.md            # Step-by-step Windows guide
@@ -245,6 +245,7 @@ workshop-kit/
 │   ├── SKILLS-REFERENCE.md         # How to use each skill
 │   ├── WORKSHOP-RUNSHEET.md        # Luke's facilitator script (3-hour runsheet)
 │   ├── FIRST-5-PROMPTS.md          # Copy-paste prompts to get started
+│   ├── ACCOUNTS-AND-LOGINS.md          # Every account to create (with links)
 │   ├── SUBSCRIPTIONS-AND-SOFTWARE.md  # What costs what
 │   └── GLOSSARY.md              # Plain English definitions of every tech term
 └── visuals/                     # Printable explainer pages (4 pages, PNG + MD)
@@ -256,6 +257,7 @@ workshop-kit/
 
 Your assistant is now yours. A few things to explore next:
 
+- **Create all accounts** — see [docs/ACCOUNTS-AND-LOGINS.md](docs/ACCOUNTS-AND-LOGINS.md)
 - **Add Gmail** — `claude mcp add gmail npx @gptscript-ai/gmail-mcp`
 - **Add Google Calendar** — `claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp`
 - **Add Telegram** (get phone notifications when tasks finish) — see [docs/COMPLETION-GUIDE.md](docs/COMPLETION-GUIDE.md)
