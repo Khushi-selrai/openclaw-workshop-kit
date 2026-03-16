@@ -4,7 +4,7 @@
 
 ## What Is AI?
 
-AI (Artificial Intelligence) is software that can think, reason, write, and learn — trained on billions of pages of text from the internet. Think of it like a brilliant employee who has read every book, article, and website ever written.
+AI (Artificial Intelligence) is software that can think, reason, write, and learn — trained on hundreds of billions of pages of text from the internet. Think of it like a brilliant employee who has read every book, article, and website ever written — and never forgets any of it.
 
 ---
 
@@ -17,8 +17,9 @@ AI (Artificial Intelligence) is software that can think, reason, write, and lear
 │   ANTHROPIC      │     OPENAI       │        GOOGLE             │
 │   (Claude)       │   (ChatGPT)      │        (Gemini)           │
 ├──────────────────┼──────────────────┼───────────────────────────┤
-│ Claude 3.5/4     │ GPT-4o           │ Gemini 1.5 Pro            │
-│                  │ GPT-o1           │ Gemini Flash              │
+│ Claude 4.5       │ GPT-4o           │ Gemini 1.5 Pro            │
+│ Claude 4.6       │ GPT-o3           │ Gemini Flash              │
+│ (what we use)    │                  │                           │
 ├──────────────────┴──────────────────┴───────────────────────────┤
 │  These are all "Large Language Models" (LLMs) — AI brains       │
 │  trained on massive amounts of text data                         │
@@ -34,8 +35,9 @@ AI (Artificial Intelligence) is software that can think, reason, write, and lear
 | Best at following instructions | Does exactly what you ask |
 | Safest and most honest | Tells you when it doesn't know |
 | Handles long documents | Can read and summarise 200-page documents |
-| Best for business tasks | Writing, research, analysis |
-| Claude Code (coding tool) | Can control your computer |
+| Best for business tasks | Writing, research, analysis, strategy |
+| Claude Code | Runs on your computer and automates tasks |
+| 92 specialist skills | Pre-trained on business, marketing, sales, and more |
 
 ---
 
@@ -45,18 +47,22 @@ AI (Artificial Intelligence) is software that can think, reason, write, and lear
 ┌─────────────────────────────────────────────────────────────────┐
 │                                                                   │
 │   1. CLAUDE.AI (website)                                         │
-│      └── Chat with Claude in your browser                       │
-│          Like texting a smart friend                             │
+│      └── Chat with Claude in your browser                        │
+│          Like texting a brilliant friend                         │
+│          Resets after every chat — no memory                     │
 │                                                                   │
 │   2. CLAUDE CODE (what we're setting up today)                   │
-│      └── Claude runs IN your computer                           │
-│          Can control your computer, install tools,               │
-│          connect to apps, automate tasks                         │
-│          Much more powerful than the website                     │
+│      └── Claude runs ON your computer                            │
+│          Remembers your business permanently                     │
+│          Controls your browser, files, and apps                  │
+│          Connects to Gmail, Calendar, CRM, and more              │
+│          92 specialist skills built in                           │
 │                                                                   │
-│   3. CLAUDE API (for developers)                                 │
-│      └── Businesses build their own Claude-powered              │
-│          apps and tools                                          │
+│   3. SERVER AGENTS (the advanced level — see Page 3)             │
+│      └── AI workers that run automatically 24/7                  │
+│          Find leads, follow up clients, track finances           │
+│          Send you phone notifications when decisions needed      │
+│          This is what Selr AI runs for its own business          │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -66,41 +72,48 @@ AI (Artificial Intelligence) is software that can think, reason, write, and lear
 ## What AI Is Good At vs. Not Good At
 
 ```
-✅ AI IS GREAT AT:                    ❌ AI IS NOT GREAT AT:
+✅ AI IS GREAT AT:                    ❌ NOT SO GREAT AT:
 ───────────────────                   ──────────────────────
-Writing any type of content           Knowing today's news (without tools)
+Writing any type of content           Knowing breaking news (without tools)
 Research and summarising              Being 100% factually accurate always
 Brainstorming ideas                   Replacing human judgement
-Following a process                   Emotional intelligence
-Repeating tasks without tiring        Understanding your unique context
-Writing code / automations             (until you tell it)
-Analysing data
-Answering questions
+Following a repeatable process        Understanding your specific context
+Doing tasks at 3am without tiring        (until you tell it who you are)
+Analysing data and spotting patterns  Knowing your business details
+Drafting emails, proposals, copy         (until you set up memory — today)
+Competitor research
+Answering questions instantly
 ```
 
 ---
 
-## The Cost of Claude
+## Claude Subscription Plans
 
-| Plan | Price | Best For |
+| Plan | Price | What You Get |
 |---|---|---|
-| Claude Free | $0/month | Occasional use, testing |
-| Claude Pro | $20 USD/month | Regular personal use |
-| **Claude Max** | **$100 USD/month** | **What we recommend — Claude Code access** |
-| Claude Team | $30/user/month | Teams of 5+ |
+| Claude Free | $0/month | Basic chat, limited messages |
+| Claude Pro | $20 USD/month | More messages, no Claude Code |
+| **Claude Max** | **$100 USD/month** | **Full Claude Code — what we use today** |
+| Claude Team | $30/user/month | Teams of 5+ people |
 
-> **Why Claude Max?** Standard Claude Pro doesn't allow Claude Code (the powerful computer-control version). Claude Max unlocks everything.
+> **Why Claude Max?** Claude Pro does not include Claude Code — the version that runs on your computer, remembers your business, and automates tasks. Max unlocks everything we are setting up today.
 
 ---
 
-## One Key Thing to Remember
+## The One Rule That Changes Everything
 
-> AI is a tool, not magic. The better you describe what you want, the better the result.
->
-> **Bad prompt:** "Write an email"
-> **Good prompt:** "Write a follow-up email to a potential client who attended my free workshop last Tuesday. They run a café in Brisbane. Keep it casual, under 150 words, and include a specific offer."
+> The better you describe what you want, the better the result.
 
-The more context you give, the more useful it becomes.
+```
+❌ WEAK:   "Write an email"
+
+✅ STRONG: "Write a follow-up email to a café owner in Brisbane
+            who attended my free workshop last Tuesday.
+            They seemed interested but haven't signed up.
+            Casual tone, under 150 words, offer a free 30-min call."
+```
+
+Your AI assistant already knows your business after setup — so you need far less context than starting from scratch every time.
 
 ---
 

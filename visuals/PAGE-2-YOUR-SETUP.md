@@ -4,33 +4,29 @@
 
 ## The Big Picture
 
-Think of your AI setup like a kitchen:
+Think of your AI setup like a kitchen — you're the head chef, Claude is your sous chef, and the tools are the equipment.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                                                                   │
-│   YOUR COMPUTER                                                  │
-│   ─────────────────────────────────────────────────────────    │
+│                        YOUR COMPUTER                             │
 │                                                                   │
 │   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐   │
 │   │   VS CODE    │     │   TERMINAL   │     │   BROWSER    │   │
 │   │              │     │              │     │              │   │
-│   │ Your editor  │     │ The command  │     │ Chrome/Safari│   │
-│   │ (where you   │────▶│ line where   │     │              │   │
-│   │ see files    │     │ Claude runs  │     │ Claude can   │   │
-│   │ and chat)    │     │              │────▶│ control this │   │
-│   └──────────────┘     └──────────────┘     └──────────────┘   │
-│          │                    │                                   │
-│          │                    │                                   │
+│   │ Your editor  │────▶│ Claude runs  │────▶│ Claude can   │   │
+│   │ See files    │     │ here         │     │ control this │   │
+│   │ Chat & watch │     │ Type commands│     │ Fill forms   │   │
+│   └──────────────┘     └──────────────┘     │ Scrape sites │   │
+│          │                    │              └──────────────┘   │
 │          ▼                    ▼                                   │
 │   ┌─────────────────────────────────────────────────────────┐   │
-│   │                   CLAUDE CODE                            │   │
-│   │              (Your AI Assistant)                         │   │
+│   │                     CLAUDE CODE                          │   │
+│   │                  (Your AI Assistant)                     │   │
 │   │                                                          │   │
-│   │  Reads your CLAUDE.md (its instructions)                │   │
-│   │  Uses your Skills (its abilities)                        │   │
-│   │  Connects to your apps via MCP tools                    │   │
-│   │  Stores memory about you                                 │   │
+│   │  Reads:    CLAUDE.md — your instructions & who you are  │   │
+│   │  Remembers: memory/USER.md — your business profile      │   │
+│   │  Uses:     92 Skills — specialist capabilities          │   │
+│   │  Connects: MCP tools — Gmail, Calendar, CRM, and more   │   │
 │   └─────────────────────────────────────────────────────────┘   │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
@@ -40,30 +36,31 @@ Think of your AI setup like a kitchen:
 
 ## What Each Part Does
 
-### VS Code (Visual Studio Code)
-Your "workspace" — like a smart notepad where you can see all your files, chat with Claude, and watch it work. It's free and made by Microsoft.
+### VS Code
+Your workspace — where you see all your files, read what Claude writes, and give it instructions. Free, made by Microsoft. Think of it as your office desk.
 
-> **Analogy:** VS Code is like your office desk. It's where you sit and work. Claude Code is the brilliant assistant sitting across from you.
+### Terminal (inside VS Code)
+The text window where you type commands and Claude Code runs. Looks technical, but you only ever need two commands. Claude handles the rest.
 
-### Terminal
-A text-based window where you type commands. Looks scary, but you'll only ever need a few commands. Claude Code runs here.
+### CLAUDE.md — Your Instructions File
+A file you can read and edit that tells Claude who you are, how to talk to you, and what it can do. It loads automatically every time you open Claude.
 
-> **Analogy:** The terminal is like a phone call to your computer. Instead of clicking icons, you type instructions. Claude handles all the complex commands for you.
+> Like an instruction manual for a new employee that Claude re-reads every morning.
 
-### CLAUDE.md (Your Instructions File)
-A file that tells Claude who you are, how to talk to you, and what it can do. Like a personalised employee handbook for your AI.
+### Skills (92 installed)
+Specialist training programs that give Claude deep expertise. When you ask Claude to write ad copy, it reads the copywriting skill first. When you ask for competitor research, it reads the research skill. No extra steps needed — it chooses automatically.
 
-> **Analogy:** Like an instruction manual you wrote for a new employee — your preferences, your business context, how you like things done.
+> Like giving your assistant access to 92 specialist textbooks they can reference on demand.
 
-### Skills
-Mini-programs that give Claude special abilities. Each skill is a folder with instructions for doing a specific job really well.
+### MCP Tools — App Connections
+Live connections to your other apps. Once connected, Claude can read your emails, check your calendar, update your CRM, and control your browser — without you having to copy and paste anything.
 
-> **Analogy:** Like hiring a specialist. Your regular assistant is smart, but when you need expert copywriting, they pull out the "copywriting specialist" manual and follow it precisely.
+> Like giving your assistant login access to your business apps.
 
-### MCP Tools (Model Context Protocol)
-Connections between Claude and other apps. Lets Claude read your emails, control your browser, or talk to your calendar.
+### Memory — USER.md
+A file where Claude saves everything it learns about you. Your name, your business, your customers, your communication style. Reads it at the start of every conversation so it always knows who you are.
 
-> **Analogy:** MCP tools are like giving your assistant keys to different rooms — the email room, the browser room, the calendar room.
+> This is what makes it YOUR assistant, not just any AI.
 
 ---
 
@@ -73,19 +70,19 @@ Connections between Claude and other apps. Lets Claude read your emails, control
 YOUR COMPUTER
 │
 ├── my-assistant/
-│   └── CLAUDE.md              ← Claude's instructions (who you are, how to help you)
+│   ├── CLAUDE.md              ← Claude's instructions (loads every session)
+│   ├── .mcp.json              ← Browser automation auto-connects on startup
+│   └── memory/
+│       ├── USER.md            ← Your profile (name, business, preferences)
+│       └── SETUP.md           ← Setup completion status
 │
 ├── workshop-kit/
 │   ├── setup.sh               ← The installer that set everything up
-│   ├── skills/                ← Your skill files
-│   └── docs/                  ← This guide and references
+│   ├── skills/                ← Your 92 skill files
+│   └── docs/                  ← Guides and reference docs
 │
 └── .claude/
-    ├── skills/                ← All your installed skills (Claude can read these)
-    └── projects/
-        └── my-assistant/
-            └── memory/
-                └── USER.md    ← Your personal memory file (name, business, preferences)
+    └── skills/                ← Where Claude looks for your installed skills
 ```
 
 ---
@@ -96,40 +93,53 @@ YOUR COMPUTER
 You type a message
         │
         ▼
-Claude reads your CLAUDE.md (your instructions + who you are)
+Claude reads CLAUDE.md (your instructions — loads every time)
         │
         ▼
-Claude reads your memory file (remembers your business & preferences)
+Claude reads memory/USER.md (your business profile — who you are)
         │
         ▼
-Claude decides which skill to use (e.g. "copywriting" for writing tasks)
+Claude picks the right skill (e.g. copywriting skill for writing tasks)
         │
         ▼
-Claude does the work (research, writing, automation, etc.)
+Claude does the work (research, writing, browser, automation)
         │
         ▼
-Claude responds to you in your preferred style
+Claude responds in your preferred style and format
         │
         ▼
-If it learned something new about you → updates your memory file
+If it learned something new → saves to your memory file
 ```
 
 ---
 
-## The 3 Commands You Need to Know
+## The 3 Commands You Will Ever Need
 
 ```bash
-# Start your AI assistant
+# 1. Start your AI assistant (do this every time)
 cd ~/my-assistant && claude
 
-# Check what tools are connected
+# 2. Check what tools are connected
 claude mcp list
 
-# Install a new tool
-claude mcp add [tool-name] [install-command]
+# 3. Install a new tool connection
+claude mcp add [tool-name] [command]
 ```
 
-That's it. Claude handles everything else.
+That is it. Claude handles everything else.
+
+---
+
+## The First Time You Open It
+
+When you run `cd ~/my-assistant && claude` for the first time, your assistant will:
+
+1. Greet you by name (once set up)
+2. Tell you what it remembers about your business
+3. Ask what you want to work on
+4. Do the task — using your skills and connected tools
+
+Every session after that, it already knows who you are. No re-explaining needed.
 
 ---
 
