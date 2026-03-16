@@ -180,45 +180,25 @@ mkdir -p "$SKILLS_DIR"
 print_ok "Skills directory ready"
 
 # ──────────────────────────────────────────
-print_step "STEP 7 — Installing your business skills..."
-
-SKILLS_TO_INSTALL=(
-  "humanizer"
-  "deep-research"
-  "copywriting"
-  "email-sequence"
-  "social-content"
-  "content-creator"
-  "sales-automator"
-  "brainstorming"
-  "youtube-summarizer"
-  "reddit-insights"
-  "competitor-alternatives"
-  "systematic-debugging"
-  "writing-plans"
-  "avoid-ai-writing"
-  "research-analyst"
-  "prompt-engineer"
-)
+print_step "STEP 7 — Installing your skills..."
 
 INSTALLED=0
 SKIPPED=0
 
-for skill in "${SKILLS_TO_INSTALL[@]}"; do
-  SRC="$WORKSHOP_DIR/skills/$skill"
+for SRC in "$WORKSHOP_DIR/skills"/*/; do
+  skill=$(basename "$SRC")
+  # Skip the SKILLS-LIST index file
+  [ "$skill" = "SKILLS-LIST.md" ] && continue
   DST="$SKILLS_DIR/$skill"
   if [ -e "$DST" ]; then
     SKIPPED=$((SKIPPED + 1))
-  elif [ -d "$SRC" ]; then
+  else
     cp -r "$SRC" "$DST"
     INSTALLED=$((INSTALLED + 1))
-    print_ok "Installed skill: $skill"
-  else
-    print_warn "Skill not in kit: $skill (skipping)"
   fi
 done
 
-print_ok "Skills: $INSTALLED new, $SKIPPED already existed"
+print_ok "Skills: $INSTALLED new installed, $SKIPPED already existed ($(( INSTALLED + SKIPPED )) total)"
 
 # ──────────────────────────────────────────
 print_step "STEP 8 — Setting up your memory system..."
