@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "description": "Browser automation \u2014 lets your assistant open websites and help set things up"
+    }
+  }
+}

@@ -7,7 +7,7 @@
 set -e
 
 SKILLS_DIR="$HOME/.claude/skills"
-MEMORY_DIR="$HOME/.claude/projects/my-assistant/memory"
+MEMORY_DIR="$HOME/my-assistant/memory"
 WORKSHOP_DIR="$HOME/workshop-kit"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -100,8 +100,11 @@ if command -v git &>/dev/null; then
 else
   print_warn "Git not found"
   if [[ "$OS" == "mac" ]]; then
+    print_warn "A popup may appear asking to install developer tools."
+    print_info "If it does, click Install and wait a few minutes — that is completely normal."
     xcode-select --install 2>/dev/null || true
-    print_ok "Triggered Git/Xcode install (follow the popup)"
+    print_info "After the install completes, run: bash ~/workshop-kit/setup.sh"
+    exit 0
   else
     print_err "Please install Git from https://git-scm.com/downloads"
     exit 1
@@ -206,6 +209,7 @@ fi
 print_step "STEP 6 — Installing your AI assistant settings (CLAUDE.md)..."
 
 CLAUDE_MD_DST="$HOME/my-assistant/CLAUDE.md"
+MY_ASSISTANT_SRC="$WORKSHOP_DIR/my-assistant"
 mkdir -p "$HOME/my-assistant"
 
 if [ -f "$WORKSHOP_DIR/CLAUDE.md" ]; then
