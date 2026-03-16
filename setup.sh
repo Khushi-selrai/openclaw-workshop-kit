@@ -4,11 +4,9 @@
 #  selrai.com.au
 # ============================================================
 
-set -e
-
 SKILLS_DIR="$HOME/.claude/skills"
 MEMORY_DIR="$HOME/my-assistant/memory"
-WORKSHOP_DIR="$HOME/workshop-kit"
+WORKSHOP_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -67,70 +65,122 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   OS="linux"
   print_ok "You're on Linux"
-elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]]; then
+elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "win32" ]]; then
   OS="windows"
-  print_ok "You're on Windows"
+  print_ok "You're on Windows (using Git Bash)"
+else
+  print_warn "Unknown OS: $OSTYPE — treating as Linux"
+  OS="linux"
 fi
 
-# Check Node.js
+# ──────────────────────────────────────────
+print_step "STEP 2 — Checking Node.js..."
+
 if command -v node &>/dev/null; then
   NODE_VER=$(node --version)
   print_ok "Node.js is installed ($NODE_VER)"
 else
-  print_warn "Node.js not found — installing now..."
+  print_warn "Node.js not found"
+  echo ""
   if [[ "$OS" == "mac" ]]; then
+    print_info "Trying to install Node.js automatically..."
     if command -v brew &>/dev/null; then
-      brew install node
+      brew install node && print_ok "Node.js installed via Homebrew"
     else
-      print_info "Installing Homebrew first (Mac package manager)..."
+      print_info "Installing Homebrew first (takes a few minutes)..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      brew install node
+      # Add Homebrew to PATH for Apple Silicon
+      if [[ -f "/opt/homebrew/bin/brew" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+      brew install node && print_ok "Node.js installed"
     fi
+  elif [[ "$OS" == "windows" ]]; then
+    print_err "Node.js is required but not installed."
+    echo ""
+    echo -e "  ${BOLD}To install Node.js on Windows:${NC}"
+    echo -e "  1. Go to: https://nodejs.org"
+    echo -e "  2. Click the 'LTS' download button"
+    echo -e "  3. Download the Windows Installer (.msi) — NOT the nvm terminal commands"
+    echo -e "  4. Run the installer (all defaults are fine)"
+    echo -e "  5. RESTART your computer"
+    echo -e "  6. Open a new Git Bash window and run: bash ~/workshop-kit/setup.sh"
+    echo ""
+    exit 1
   else
-    print_err "Please install Node.js from https://nodejs.org before continuing"
-    print_err "Choose the LTS version, then re-run this script"
+    print_err "Please install Node.js from https://nodejs.org (choose LTS), then re-run this script."
     exit 1
   fi
-  print_ok "Node.js installed"
 fi
 
-# Check Git
+# ──────────────────────────────────────────
+print_step "STEP 3 — Checking Git..."
+
 if command -v git &>/dev/null; then
-  print_ok "Git is installed"
+  GIT_VER=$(git --version)
+  print_ok "Git is installed ($GIT_VER)"
 else
   print_warn "Git not found"
   if [[ "$OS" == "mac" ]]; then
-    print_warn "A popup may appear asking to install developer tools."
-    print_info "If it does, click Install and wait a few minutes — that is completely normal."
+    print_warn "A popup is about to appear. When it does:"
+    print_info "→ Click INSTALL (not 'Get Xcode') and wait a few minutes"
+    print_info "→ Then re-run: bash ~/workshop-kit/setup.sh"
     xcode-select --install 2>/dev/null || true
-    print_info "After the install completes, run: bash ~/workshop-kit/setup.sh"
     exit 0
+  elif [[ "$OS" == "windows" ]]; then
+    print_err "Git is required. Install Git for Windows first."
+    echo ""
+    echo -e "  ${BOLD}To install Git + Git Bash:${NC}"
+    echo -e "  1. Go to: https://git-scm.com/downloads/win"
+    echo -e "  2. Click 'Click here to download'"
+    echo -e "  3. Run the installer — all defaults are fine"
+    echo -e "  4. Restart your computer, then open Git Bash and run this script again"
+    echo ""
+    exit 1
   else
-    print_err "Please install Git from https://git-scm.com/downloads"
+    print_err "Please install Git then re-run this script."
     exit 1
   fi
 fi
 
 # ──────────────────────────────────────────
-print_step "STEP 2 — Installing/updating Claude Code..."
+print_step "STEP 4 — Installing/updating Claude Code..."
 
 if command -v claude &>/dev/null; then
-  print_ok "Claude Code already installed — updating to latest..."
-  npm install -g @anthropic-ai/claude-code 2>/dev/null | tail -1
+  CLAUDE_VER=$(claude --version 2>/dev/null | head -1)
+  print_ok "Claude Code already installed ($CLAUDE_VER) — updating..."
+  npm install -g @anthropic-ai/claude-code 2>&1 | tail -1
+  print_ok "Claude Code is up to date"
 else
-  print_info "Installing Claude Code (this may take 1-2 minutes)..."
-  npm install -g @anthropic-ai/claude-code
-  print_ok "Claude Code installed"
+  print_info "Installing Claude Code (1-2 minutes)..."
+  if npm install -g @anthropic-ai/claude-code; then
+    print_ok "Claude Code installed"
+  else
+    print_err "Claude Code install failed."
+    if [[ "$OS" == "windows" ]]; then
+      echo ""
+      echo -e "  ${BOLD}Try running Git Bash as Administrator:${NC}"
+      echo -e "  Right-click Git Bash → Run as administrator"
+      echo -e "  Then run: npm install -g @anthropic-ai/claude-code"
+    fi
+    exit 1
+  fi
 fi
 
 # ──────────────────────────────────────────
-print_step "STEP 3 — Setting up your skills directory..."
+print_step "STEP 5 — Setting up your workspace folder..."
 
-mkdir -p "$SKILLS_DIR"
-print_ok "Skills directory ready: $SKILLS_DIR"
+mkdir -p "$HOME/my-assistant/memory"
+print_ok "Workspace ready: ~/my-assistant/"
 
 # ──────────────────────────────────────────
-print_step "STEP 4 — Installing your business skills..."
+print_step "STEP 6 — Setting up your skills directory..."
+
+mkdir -p "$SKILLS_DIR"
+print_ok "Skills directory ready"
+
+# ──────────────────────────────────────────
+print_step "STEP 7 — Installing your business skills..."
 
 SKILLS_TO_INSTALL=(
   "humanizer"
@@ -164,18 +214,15 @@ for skill in "${SKILLS_TO_INSTALL[@]}"; do
     INSTALLED=$((INSTALLED + 1))
     print_ok "Installed skill: $skill"
   else
-    print_warn "Skill not found in kit: $skill (skipping)"
+    print_warn "Skill not in kit: $skill (skipping)"
   fi
 done
 
-print_ok "Skills: $INSTALLED new installed, $SKIPPED already existed"
+print_ok "Skills: $INSTALLED new, $SKIPPED already existed"
 
 # ──────────────────────────────────────────
-print_step "STEP 5 — Setting up your memory system..."
+print_step "STEP 8 — Setting up your memory system..."
 
-mkdir -p "$MEMORY_DIR"
-
-# Create memory file if it doesn't exist
 if [ ! -f "$MEMORY_DIR/USER.md" ]; then
   cat > "$MEMORY_DIR/USER.md" << 'MEMEOF'
 ---
@@ -189,12 +236,11 @@ status: not-yet-onboarded
 > Your assistant will ask you questions and save the answers here so it always remembers who you are.
 
 MEMEOF
-  print_ok "Memory system ready — your assistant will ask you about your business on first run"
+  print_ok "Memory system ready — your assistant will ask about your business on first run"
 else
   print_ok "Memory system already set up"
 fi
 
-# Copy MEMORY index file
 if [ ! -f "$MEMORY_DIR/MEMORY.md" ]; then
   cat > "$MEMORY_DIR/MEMORY.md" << 'MEMEOF'
 # My AI Assistant Memory
@@ -206,52 +252,77 @@ MEMEOF
 fi
 
 # ──────────────────────────────────────────
-print_step "STEP 6 — Installing your AI assistant settings (CLAUDE.md)..."
-
-CLAUDE_MD_DST="$HOME/my-assistant/CLAUDE.md"
-MY_ASSISTANT_SRC="$WORKSHOP_DIR/my-assistant"
-mkdir -p "$HOME/my-assistant"
+print_step "STEP 9 — Installing your assistant settings..."
 
 if [ -f "$WORKSHOP_DIR/CLAUDE.md" ]; then
-  cp "$WORKSHOP_DIR/CLAUDE.md" "$CLAUDE_MD_DST"
-  print_ok "Assistant settings installed at: $CLAUDE_MD_DST"
+  cp "$WORKSHOP_DIR/CLAUDE.md" "$HOME/my-assistant/CLAUDE.md"
+  print_ok "Assistant settings installed"
 else
   print_warn "CLAUDE.md not found in workshop kit — skipping"
 fi
 
-# ──────────────────────────────────────────
-print_step "STEP 7 — Connecting browser automation..."
-
-print_info "This gives your assistant the ability to control your browser"
-print_info "Installing Playwright MCP..."
-
-if claude mcp list 2>/dev/null | grep -q "playwright"; then
-  print_ok "Browser automation already connected"
-else
-  claude mcp add playwright npx @playwright/mcp@latest 2>/dev/null && \
-    print_ok "Browser automation connected ✅" || \
-    print_warn "Browser automation install failed — run manually: claude mcp add playwright npx @playwright/mcp@latest"
+# Copy .mcp.json for Playwright auto-activation
+if [ -f "$WORKSHOP_DIR/my-assistant/.mcp.json" ] && [ ! -f "$HOME/my-assistant/.mcp.json" ]; then
+  cp "$WORKSHOP_DIR/my-assistant/.mcp.json" "$HOME/my-assistant/.mcp.json"
+  print_ok "Browser automation config installed"
 fi
 
 # ──────────────────────────────────────────
-print_step "STEP 8 — All done! 🎉"
+print_step "STEP 10 — Connecting browser automation (Playwright)..."
 
+print_info "This lets your assistant control your browser to do tasks for you"
+
+if claude mcp list 2>/dev/null | grep -qi "playwright"; then
+  print_ok "Browser automation already connected"
+else
+  if claude mcp add playwright npx @playwright/mcp@latest --scope user 2>/dev/null; then
+    print_ok "Browser automation connected"
+  else
+    print_warn "Could not auto-connect browser automation."
+    print_info "Run manually after setup: claude mcp add playwright npx @playwright/mcp@latest"
+  fi
+fi
+
+# ──────────────────────────────────────────
+print_step "STEP 11 — Opening your workspace in VS Code..."
+
+if command -v code &>/dev/null; then
+  code "$HOME/my-assistant"
+  print_ok "VS Code opened with your workspace"
+  print_info "You should see: CLAUDE.md, memory/ folder, .mcp.json in the left panel"
+else
+  print_warn "'code' command not found — open VS Code manually."
+  echo ""
+  if [[ "$OS" == "mac" ]]; then
+    echo -e "  In VS Code: ${BOLD}Cmd+Shift+P${NC} → type 'shell command' → select 'Install code command in PATH'"
+  else
+    echo -e "  In VS Code: ${BOLD}Ctrl+Shift+P${NC} → type 'shell command' → select 'Install code command in PATH'"
+  fi
+  echo -e "  Then in a new terminal: ${BLUE}code ~/my-assistant${NC}"
+fi
+
+# ──────────────────────────────────────────
 echo ""
-echo -e "${GREEN}${BOLD}Your AI Business Assistant is ready!${NC}"
+echo -e "${GREEN}${BOLD}============================================${NC}"
+echo -e "${GREEN}${BOLD}  Your AI Business Assistant is ready!${NC}"
+echo -e "${GREEN}${BOLD}============================================${NC}"
 echo ""
-echo -e "  📁 Skills installed: $((INSTALLED + SKIPPED)) skills"
-echo -e "  🧠 Memory system: ready"
-echo -e "  🌐 Browser automation: connected"
+echo -e "  Skills installed: $((INSTALLED + SKIPPED))"
+echo -e "  Memory system:    ready"
+echo -e "  Browser control:  connected"
+echo -e "  Workspace:        ~/my-assistant/"
 echo ""
-echo -e "${BOLD}To start your assistant, run:${NC}"
+echo -e "${BOLD}To start your assistant, open the VS Code terminal and run:${NC}"
 echo ""
 echo -e "  ${BLUE}cd ~/my-assistant && claude${NC}"
 echo ""
 echo -e "Your assistant will greet you, ask about your business,"
 echo -e "and remember everything for next time."
 echo ""
-echo -e "📚 Full guide: ~/workshop-kit/docs/COMPLETION-GUIDE.md"
-echo -e "📖 Skills reference: ~/workshop-kit/docs/SKILLS-REFERENCE.md"
+echo -e "Guides:  ~/workshop-kit/docs/"
+if [[ "$OS" == "windows" ]]; then
+echo -e "Windows: ~/workshop-kit/docs/WINDOWS-SETUP.md"
+fi
 echo ""
 echo -e "${BLUE}Built by Selr AI — selrai.com.au${NC}"
 echo ""
