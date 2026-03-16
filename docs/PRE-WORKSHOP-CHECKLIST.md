@@ -1,6 +1,6 @@
-# Before the Workshop — Your 3-Step Checklist
+# Before the Workshop — Your Setup Checklist
 
-**Please complete all 3 steps before arriving. It takes about 15-20 minutes.**
+**Please complete all 5 steps before arriving. It takes about 15-20 minutes.**
 
 If you get stuck on anything, email **luke@selrai.com.au** before the workshop.
 
@@ -60,6 +60,32 @@ This connects Claude AI directly inside VS Code.
 5. A Claude icon will appear in your left sidebar
 
 ✅ Done when: The Claude icon appears in the VS Code sidebar.
+
+---
+
+## Step 4 — Create a GitHub Account
+
+GitHub is where the workshop kit lives. You need a free account to download it.
+
+1. Go to: [github.com/signup](https://github.com/signup)
+2. Enter your email, pick a username, set a password
+3. Verify your email (check your inbox for a confirmation link)
+
+That is it — the free plan is all you need.
+
+✅ Done when: You can log in at github.com
+
+---
+
+## Step 5 — Install Telegram on Your Phone
+
+Telegram is a free messaging app. Your AI assistant will send you notifications through it.
+
+1. **iPhone:** App Store → search **Telegram** → Install
+2. **Android:** Play Store → search **Telegram** → Install
+3. Open the app and sign up with your phone number
+
+✅ Done when: Telegram is installed and you are signed in
 
 ---
 

@@ -41,7 +41,7 @@ These are the most valuable next connections. Do them in this order:
 
 #### 1. Google Calendar (know your schedule)
 ```bash
-claude mcp add google-calendar npx @gptscript-ai/claude-gcal-mcp
+claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp
 ```
 Now your assistant can see your calendar, find free time, and help you plan meetings.
 
@@ -152,7 +152,7 @@ cd ~/workshop-kit && bash setup.sh
 ### "Claude isn't remembering me"
 Check your memory file exists:
 ```bash
-cat ~/.claude/projects/my-assistant/memory/USER.md
+cat ~/my-assistant/memory/USER.md
 ```
 If it says "status: not-yet-onboarded", start a new conversation and your assistant will run the onboarding questions again.
 
@@ -162,7 +162,7 @@ claude mcp list
 ```
 If you don't see the tool in the list, re-add it:
 ```bash
-claude mcp add gmail npx @gptscript-ai/claude-gmail-mcp
+claude mcp add gmail npx @gptscript-ai/gmail-mcp
 ```
 
 ### "Something broke and I don't know what"
