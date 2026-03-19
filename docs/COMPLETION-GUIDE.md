@@ -13,7 +13,7 @@ Tick these off:
 - [ ] Claude Code installed (`npm install -g @anthropic-ai/claude-code`)
 - [ ] Logged in to Claude (`claude login`)
 - [ ] Workshop kit downloaded (`git clone ...`)
-- [ ] Setup script run (`bash setup.sh`)
+- [ ] Skills installed (check `~/.claude/skills/`)
 - [ ] Playwright (browser automation) connected
 - [ ] Gmail connected (optional — if you got to it)
 - [ ] Onboarding completed (told your assistant about your business)
@@ -28,10 +28,11 @@ Tick these off:
 Open Terminal (Mac: press Command + Space, type "Terminal", press Enter) and run:
 
 ```bash
-cd ~/workshop-kit && bash setup.sh
+npm install -g @anthropic-ai/claude-code
+claude login
 ```
 
-This will pick up where it left off.
+Your skills were installed during the workshop setup. They live at `~/.claude/skills/`
 
 ---
 
@@ -40,22 +41,20 @@ This will pick up where it left off.
 These are the most valuable next connections. Do them in this order:
 
 #### 1. Google Calendar (know your schedule)
-```bash
-claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp
-```
+Your assistant can help you set this up — just ask in the Claude chat:
+> "Help me connect Google Calendar so you can see my schedule."
+
 Now your assistant can see your calendar, find free time, and help you plan meetings.
 
 #### 2. Notion (knowledge base)
-```bash
-claude mcp add notion npx @anthropic-ai/notion-mcp
-```
-Your assistant can read and update your Notion workspace. Great for keeping a business knowledge base.
+Your assistant can help you set this up — just ask in the Claude chat:
+> "Help me connect Notion so you can read and update my workspace."
+
+Great for keeping a business knowledge base.
 
 #### 3. Slack or Microsoft Teams (if you use them)
-```bash
-# Slack
-claude mcp add slack npx @gptscript-ai/claude-slack-mcp
-```
+Your assistant can help you set this up — just ask in the Claude chat:
+> "Help me connect Slack so you can send and read messages."
 
 ---
 
@@ -74,13 +73,8 @@ This lets your AI assistant send you messages on your phone. Very useful when it
 
 ### Connect Your CRM (GoHighLevel or HubSpot)
 
-If you use GoHighLevel (GHL):
-```bash
-claude mcp add ghl npx @gptscript-ai/claude-ghl-mcp
-```
-
-Then tell your assistant:
-> "I've connected my CRM. My API key is [key]. Help me set it up so you can manage my contacts."
+Your assistant can help you set this up — just ask in the Claude chat:
+> "Help me connect my CRM (GoHighLevel / HubSpot) so you can manage my contacts. My API key is [key]."
 
 ---
 
@@ -144,10 +138,8 @@ Paste in your best prompts so you can reuse them.
 ```bash
 ls ~/.claude/skills/
 ```
-If the folder is empty, re-run setup:
-```bash
-cd ~/workshop-kit && bash setup.sh
-```
+Your skills were installed during the workshop setup. They live at `~/.claude/skills/`. If the folder is empty, ask your assistant for help:
+> "My skills folder is empty. Help me reinstall the workshop skills."
 
 ### "Claude isn't remembering me"
 Check your memory file exists:
@@ -157,13 +149,8 @@ cat ~/my-assistant/memory/USER.md
 If it says "status: not-yet-onboarded", start a new conversation and your assistant will run the onboarding questions again.
 
 ### "Gmail/Calendar isn't connecting"
-```bash
-claude mcp list
-```
-If you don't see the tool in the list, re-add it:
-```bash
-claude mcp add gmail npx @gptscript-ai/gmail-mcp
-```
+Your assistant can help you set this up — just ask in the Claude chat:
+> "Gmail/Calendar isn't working. Help me reconnect it."
 
 ### "Something broke and I don't know what"
 Tell your assistant:

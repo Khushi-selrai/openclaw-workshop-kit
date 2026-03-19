@@ -10,9 +10,9 @@
 
 A self-installing AI business assistant kit. Non-technical business owners:
 1. Install VS Code + Claude Code extension (done before workshop)
-2. Run ONE command in the terminal
-3. An AI agent takes over and sets everything else up autonomously — using browser automation (Playwright) to open websites, click through signups, guide through API keys, etc.
-4. They sit and watch/approve
+2. Paste a bootstrap prompt (from a Notion page) into Claude Code
+3. Claude Code clones the repo, copies skills, creates the workspace — all conversationally
+4. They open `~/my-assistant/` in VS Code, start Claude Code, and the CLAUDE.md agent takes over for onboarding and demos
 
 ---
 
@@ -20,16 +20,16 @@ A self-installing AI business assistant kit. Non-technical business owners:
 
 ```
 openclaw-workshop-kit/
-├── CLAUDE.md                        # AI assistant instructions (root version)
-├── setup.sh                         # One-command installer
+├── CLAUDE.md                        # Pointer to my-assistant/CLAUDE.md (not used by the assistant)
+├── setup.sh.deprecated              # Old bash installer (kept for reference only)
 ├── README.md                        # End-user quickstart
 │
 ├── my-assistant/                    # THIS is what gets copied to ~/my-assistant/
-│   ├── CLAUDE.md                    # AI agent brain — 3-phase setup wizard
-│   ├── .mcp.json                    # Auto-activates Playwright on folder open
+│   ├── CLAUDE.md                    # AI agent brain — onboarding + demo agent
 │   └── memory/
 │       ├── USER.md                  # Onboarding placeholder (status: not-yet-onboarded)
-│       └── SETUP.md                 # Setup status tracker
+│       ├── SETUP.md                 # Setup status tracker
+│       └── MEMORY.md               # Persistent memory across conversations
 │
 ├── skills/                          # 92 bundled business skills
 │   ├── humanizer/
@@ -70,48 +70,54 @@ openclaw-workshop-kit/
 
 ## How the Setup Flow Works
 
-When an attendee runs the install command:
+The setup is now fully conversational — no bash scripts involved.
 
-```bash
-git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit && cd ~/workshop-kit && bash setup.sh && cd ~/my-assistant && claude
-```
+**Step 1: Bootstrap prompt (in any directory)**
 
-1. `setup.sh` installs Node.js, Claude Code, copies skills, sets up memory files
-2. `cd ~/my-assistant && claude` opens the assistant in that folder
-3. Claude reads `my-assistant/CLAUDE.md` — sees setup is not complete
-4. **Phase 1 (Setup):** Installs Playwright first, then uses browser automation to walk through remaining setup — GitHub, Gmail, Google Calendar, Telegram
-5. **Phase 2 (Onboarding):** Asks 7 questions about their business, saves to `~/my-assistant/memory/USER.md`
-6. **Phase 3 (Demo):** Runs a live demo task matched to their stated business challenge
+Attendees copy a bootstrap prompt from the workshop Notion page and paste it into Claude Code. The bootstrap prompt instructs Claude to:
+1. Clone the repo to `~/workshop-kit`
+2. Copy skills from `skills/` to `~/.claude/skills/`
+3. Copy `my-assistant/` to `~/my-assistant/`
+4. Add Playwright MCP via `claude mcp add` command (no `.mcp.json` file needed)
 
-**Key design decision:** Playwright (browser automation) goes in FIRST. Once that's connected, the agent can drive the browser to handle everything else — open OAuth consent screens, navigate to settings pages, etc. The user just watches and approves.
+No Node.js or Git pre-install needed on Mac. Windows users only need Git for Windows.
+
+**Step 2: Open the workspace**
+
+The user opens `~/my-assistant/` in VS Code and starts Claude Code. Claude reads `my-assistant/CLAUDE.md` and the agent takes over:
+1. **Onboarding:** Asks 7 questions about their business, saves to `~/my-assistant/memory/USER.md`
+2. **Demo:** Runs a live demo task matched to their stated business challenge
+
+**Key design decisions:**
+- The Notion page is the single source of truth for attendees — the bootstrap prompt lives there and can be updated without pushing to GitHub
+- The root `CLAUDE.md` is now just a brief pointer to `my-assistant/CLAUDE.md`
+- Playwright MCP is added via `claude mcp add` at the user scope, not via a `.mcp.json` file in the workspace
+- `setup.sh` has been renamed to `setup.sh.deprecated` and kept for reference only
 
 ---
 
 ## What Needs Work (Priority Order)
 
-### HIGH — Test the full install flow
+### HIGH — Test the full bootstrap flow
 
 The most important thing is a clean end-to-end test:
 1. On a fresh Mac (or a new Mac user account) — not a developer machine
-2. Run the single install command
-3. Does setup.sh complete without errors?
-4. Does `cd ~/my-assistant && claude` open correctly?
-5. Does the Playwright install step work?
+2. Open VS Code, start Claude Code, paste the bootstrap prompt
+3. Does the repo clone, skill copy, and workspace creation all succeed?
+4. Does opening `~/my-assistant/` in VS Code + starting Claude Code trigger the onboarding agent?
+5. Does the Playwright MCP install step work (`claude mcp add` at user scope)?
 6. Does onboarding save to the right path?
 
 **Known potential issues:**
-- `git clone` may trigger Xcode popup on fresh Mac — setup.sh warns about this but test it
+- `git clone` may trigger Xcode popup on fresh Mac — the bootstrap prompt should handle this gracefully
 - Playwright MCP install command: `claude mcp add playwright npx @playwright/mcp@latest --scope user` — verify this is the correct syntax for the current Claude Code version
-- The `.mcp.json` in `my-assistant/` — verify Claude Code picks this up automatically when you `cd` into that folder
-- `~/.claude/skills/` path — verify setup.sh copies skills here correctly
+- `~/.claude/skills/` path — verify the bootstrap prompt copies skills here correctly
 
 ### HIGH — Windows support
 
-Currently setup.sh works on Mac/Linux. Windows users need:
-- Different install commands (no Homebrew, different Node.js install)
-- PowerShell vs bash differences
-- Create `docs/WINDOWS-SETUP.md` with step-by-step Windows instructions
-- OR add Windows detection to setup.sh with alternative paths
+Windows users need Git for Windows installed before running the bootstrap prompt. No other pre-installs required.
+- Verify the bootstrap prompt works in Git Bash / PowerShell terminal inside VS Code
+- `docs/WINDOWS-SETUP.md` should reflect the new bootstrap flow
 
 ### MEDIUM — MCP command validation
 
@@ -143,15 +149,13 @@ Each skill in `skills/` is a SKILL.md file. Quick scan to check:
 
 ## Update System
 
-This is the beauty of GitHub — attendees can always pull updates:
+Attendees can pull updates from GitHub:
 
 ```bash
-cd ~/workshop-kit && git pull origin main && bash setup.sh
+cd ~/workshop-kit && git pull origin main
 ```
 
-Running `setup.sh` again is safe — it skips anything already installed.
-
-For pushing updates to everyone: just commit to `main`. Next time they pull, they get everything new.
+For pushing updates to everyone: just commit to `main`. Next time they pull, they get everything new. The bootstrap prompt on Notion can also be updated independently — it is the single source of truth for the setup flow.
 
 **Planned future updates:**
 - More skills as they get built

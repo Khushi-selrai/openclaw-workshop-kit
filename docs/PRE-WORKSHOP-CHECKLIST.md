@@ -1,6 +1,6 @@
 # Before the Workshop — Your Setup Checklist
 
-**Please complete all 5 steps before arriving. It takes about 15-20 minutes.**
+**Please complete these steps before arriving. It takes about 10 minutes.**
 
 If you get stuck on anything, email **luke@selrai.com.au** before the workshop.
 
@@ -17,7 +17,7 @@ Claude is the AI that powers your assistant. You need a Claude Max subscription.
 
 > **Why Claude Max?** The standard free plan does not include Claude Code — the version that runs on your computer and automates tasks. Claude Max unlocks the full power.
 
-✅ Done when: You can log in to claude.ai and see "Max" next to your plan.
+Done when: You can log in to claude.ai and see "Max" next to your plan.
 
 ---
 
@@ -43,13 +43,13 @@ VS Code is the app where you will work with your AI assistant. It is free.
    - **Add to PATH (requires shell restart)**
 5. Click through to Install, then Finish
 
-✅ Done when: VS Code opens and shows a welcome screen.
+Done when: VS Code opens and shows a welcome screen.
 
 ---
 
 ## Step 3 — Install the Claude Code Extension
 
-This connects Claude AI directly inside VS Code.
+This connects Claude AI directly inside VS Code. The extension is self-contained — it does not need anything else installed.
 
 1. Open VS Code
 2. Click the **Extensions icon** on the left sidebar (looks like 4 squares) — or press:
@@ -59,37 +59,28 @@ This connects Claude AI directly inside VS Code.
 4. Click **Install** on the result from Anthropic
 5. A Claude icon will appear in your left sidebar
 
-✅ Done when: The Claude icon appears in the VS Code sidebar.
+Done when: The Claude icon appears in the VS Code sidebar.
 
 ---
 
-## Step 4 — Create a GitHub Account
+## Step 4 — Windows Only: Install Git for Windows
 
-GitHub is where the workshop kit lives. You need a free account to download it.
+**Mac users: skip this step.** Git will be set up automatically on your Mac when we need it.
 
-1. Go to: [github.com/signup](https://github.com/signup)
-2. Enter your email, pick a username, set a password
-3. Verify your email (check your inbox for a confirmation link)
+Windows needs Git installed separately, and its installer does not always add it to the system PATH correctly. Follow the full instructions in our **[Windows Setup Guide](WINDOWS-SETUP.md)**, which covers:
 
-That is it — the free plan is all you need.
+1. Download and install Git for Windows
+2. Manually fix the PATH (so VS Code can find Git)
+3. Restart your computer
+4. Verify it works
 
-✅ Done when: You can log in at github.com
+> This is the most common thing that trips people up on Windows. If you follow the guide step by step, it takes about 5 minutes.
 
----
-
-## Step 5 — Install Telegram on Your Phone
-
-Telegram is a free messaging app. Your AI assistant will send you notifications through it.
-
-1. **iPhone:** App Store → search **Telegram** → Install
-2. **Android:** Play Store → search **Telegram** → Install
-3. Open the app and sign up with your phone number
-
-✅ Done when: Telegram is installed and you are signed in
+Done when: You open a terminal in VS Code, type `git --version`, and see a version number.
 
 ---
 
-## That Is It — We Handle the Rest at the Workshop
+## That Is Everything — We Handle the Rest at the Workshop
 
 Bring your laptop fully charged. We will walk through everything else together on the day.
 
@@ -98,46 +89,6 @@ Bring your laptop fully charged. We will walk through everything else together o
 - Your laptop (Mac or Windows)
 - Charger
 - Your Claude login details (email + password you set up in Step 1)
-- Your Google account details — optional, for connecting Gmail/Calendar
-
----
-
-## Bonus: Install Node.js Before You Arrive (Saves 5 Minutes)
-
-If you want to get a head start, install Node.js before the workshop.
-
-### Mac (bonus)
-
-1. Go to: [nodejs.org](https://nodejs.org)
-2. Click the **LTS** download button
-3. Click **macOS Installer (.pkg)** to download — NOT the nvm/terminal commands
-4. Open the downloaded file and click through the installer
-
-### Windows (bonus)
-
-1. Go to: [nodejs.org](https://nodejs.org)
-2. Click the **LTS** download button
-3. Click the **Windows Installer (.msi)** to download
-4. Run the installer — click through all defaults
-5. Restart your computer after it finishes
-
-**Verify it worked:**
-
-- Mac: Open Terminal (search "Terminal") → type `node --version` → should show something like `v20.11.0`
-- Windows: Open Command Prompt (search "cmd") → type `node --version` → should show a version number
-
----
-
-## Windows Users — Extra Step: Install Git Bash
-
-Windows requires one extra tool called **Git Bash** for the setup script to work.
-
-1. Go to: [git-scm.com/downloads/win](https://git-scm.com/downloads/win)
-2. Click **"Click here to download"**
-3. Run the installer — click through all defaults
-4. After install, search for **Git Bash** in your Start Menu to confirm it opens
-
-> At the workshop, you will use Git Bash instead of the regular Command Prompt when typing commands.
 
 ---
 

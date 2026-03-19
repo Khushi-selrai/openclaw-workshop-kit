@@ -1,7 +1,13 @@
 #!/bin/bash
 # ============================================================
-#  OpenClaw Workshop — AI Business Assistant Setup
-#  selrai.com.au
+# DEPRECATED — This script is no longer used.
+# As of March 2026, setup is handled by Claude Code directly.
+# See the Notion page for the bootstrap prompt.
+# This file is kept for reference only.
+# ============================================================
+#
+# Original: OpenClaw Workshop — AI Business Assistant Setup
+# selrai.com.au
 # ============================================================
 
 SKILLS_DIR="$HOME/.claude/skills"

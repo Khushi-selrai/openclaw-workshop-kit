@@ -40,13 +40,12 @@ Your Laptop
               └── Playwright (browser remote control)
 ```
 
-**Three phases happen automatically on first run:**
+**Two steps, then you are up and running:**
 
-| Phase | What Happens |
+| Step | What Happens |
 |---|---|
-| **1. Setup** | Installs tools, connects browser automation, opens your workspace |
-| **2. Onboarding** | Your assistant asks 7 questions and saves your profile forever |
-| **3. Demo** | Your assistant picks a task based on your biggest challenge and does it live |
+| **1. Bootstrap** | Paste the bootstrap prompt into Claude Code — it clones the repo, copies skills, and creates your workspace |
+| **2. Open workspace** | Open `~/my-assistant/` in VS Code and start Claude Code — the CLAUDE.md agent handles onboarding, asks 7 questions about your business, and runs a live demo |
 
 After that, every time you open VS Code and type `claude`, your assistant already knows who you are.
 
@@ -60,28 +59,21 @@ After that, every time you open VS Code and type `claude`, your assistant alread
 2. Install **VS Code** at [code.visualstudio.com](https://code.visualstudio.com)
 3. Install the **Claude Code extension** inside VS Code (search "Claude Code" in Extensions)
 
-Full pre-workshop checklist: [docs/PRE-WORKSHOP-CHECKLIST.md](docs/PRE-WORKSHOP-CHECKLIST.md)
+**Windows users:** also install [Git for Windows](https://gitforwindows.org) — see [docs/WINDOWS-SETUP.md](docs/WINDOWS-SETUP.md) before arriving.
 
-**Windows users:** also read [docs/WINDOWS-SETUP.md](docs/WINDOWS-SETUP.md) before arriving.
+No other pre-installs needed on Mac. Full checklist: [docs/PRE-WORKSHOP-CHECKLIST.md](docs/PRE-WORKSHOP-CHECKLIST.md)
 
 ---
 
 ## At the Workshop
 
-Open VS Code, then open the terminal inside it and run:
+1. Open VS Code and start Claude Code in the terminal
+2. Copy the **bootstrap prompt** from the workshop Notion page and paste it into Claude Code
+3. Claude handles everything: clones the repo, copies skills, creates your workspace
+4. When it finishes, open `~/my-assistant/` in VS Code and start Claude Code
+5. The CLAUDE.md agent takes over — it greets you, asks about your business, and shows you what it can do
 
-```bash
-git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit
-cd ~/workshop-kit && bash setup.sh
-```
-
-Then start your assistant:
-
-```bash
-cd ~/my-assistant && claude
-```
-
-Your assistant takes it from there. It will greet you, install everything it needs, ask about your business, and show you what it can do — all in plain English, one step at a time.
+Your assistant handles it all conversationally, one step at a time. No scripts to run, no commands to memorise.
 
 ---
 
@@ -229,14 +221,14 @@ This kit includes the full professional skill library — the same depth used to
 
 ```text
 workshop-kit/
-├── CLAUDE.md                    # Your assistant's brain — instructions + setup wizard
-├── setup.sh                     # One-command installer (Mac + Windows)
+├── CLAUDE.md                    # Pointer to my-assistant/CLAUDE.md
+├── setup.sh.deprecated          # Old installer (kept for reference only)
 ├── my-assistant/                # Copied to ~/my-assistant/ on your computer
-│   ├── CLAUDE.md                # Your assistant's config
-│   ├── .mcp.json                # Auto-connects browser automation on startup
+│   ├── CLAUDE.md                # Your assistant's brain — instructions + onboarding agent
 │   └── memory/                  # Where your assistant saves what it learns
 │       ├── USER.md              # Your profile (filled in on first run)
-│       └── SETUP.md             # Setup completion status
+│       ├── SETUP.md             # Setup completion status
+│       └── MEMORY.md            # Persistent memory across conversations
 ├── skills/                      # 92 skills (installed to ~/.claude/skills/)
 ├── docs/
 │   ├── PRE-WORKSHOP-CHECKLIST.md   # What to do before arriving
@@ -278,7 +270,7 @@ Yes. Your memory files (`~/my-assistant/memory/`) live on your computer only. No
 Claude Max is $100 USD/month (~$155 AUD). That is the only required cost. Everything else in this kit is free.
 
 **What if I miss a step during setup?**
-Your assistant will notice and offer to fix it. Or re-run `bash ~/workshop-kit/setup.sh` at any time — it is safe to run multiple times.
+Your assistant will notice and offer to fix it. Just open `~/my-assistant/` in VS Code, start Claude Code, and it will pick up where you left off.
 
 **Can I use this on Windows?**
 Yes. See [docs/WINDOWS-SETUP.md](docs/WINDOWS-SETUP.md) for the complete Windows walkthrough.

@@ -13,7 +13,7 @@
 - [ ] Print and lay out: GLOSSARY page (1 per person)
 - [ ] Have SUBSCRIPTIONS-AND-SOFTWARE doc on the screen
 - [ ] Test your own setup — open VS Code, run `cd ~/my-assistant && claude`, confirm it loads
-- [ ] Have the GitHub URL visible: `github.com/luke-selrai/openclaw-workshop-kit`
+- [ ] Have the Notion page open with the bootstrap prompt ready for attendees to copy
 - [ ] Check the room Wi-Fi is strong enough for 20 people downloading tools
 - [ ] Have a "helper" setup for anyone who falls behind (Telegram or second laptop)
 
@@ -54,18 +54,23 @@
 
 **Purpose:** Get them excited and show it is real before they touch anything.
 
-### 0:40-1:00 — SETUP TIME — Everyone Installs (20 min)
+### 0:40-0:55 — SETUP TIME — Everyone Installs (15 min)
 
 **Walk them through one step at a time. Do each step yourself on the big screen.**
 
 1. "Everyone open VS Code" — wait until everyone has it
-2. "Click Terminal at the top → New Terminal"
-3. "Type this exactly: `git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit`"
+2. "Open the Claude Code panel" (show them how)
+3. "Now go to the Notion page — the link is on the screen" — show the Notion page URL
+4. "Copy the bootstrap prompt from the Notion page and paste it into Claude Code"
    - **Warning beforehand:** "If a popup appears asking to install developer tools — click Install. This is normal on Mac."
-4. Wait for everyone. Walk around to anyone stuck.
-5. "Now type: `cd ~/workshop-kit && bash setup.sh`"
-6. Watch the setup run — narrate what is happening on screen
-7. When setup completes: "Now type: `cd ~/my-assistant && claude`"
+5. Wait for everyone. Walk around to anyone stuck. Claude will clone the repo, copy skills, and create the workspace.
+6. When the bootstrap finishes: "Now open the folder `~/my-assistant/` in VS Code — File → Open Folder"
+7. "Start Claude Code in the new window — your assistant will introduce itself"
+
+### 0:55-1:00 — Buffer / Help Stragglers (5 min)
+
+- Walk the room, make sure everyone has Claude running in `~/my-assistant/`
+- Help anyone whose bootstrap had issues
 
 ---
 
@@ -128,12 +133,11 @@
 | Problem | Fix |
 |---|---|
 | `git: command not found` | Click Install on the Xcode popup that appeared |
-| `claude: command not found` | Run: `npm install -g @anthropic-ai/claude-code` |
-| `permission denied` | Run: `sudo npm install -g @anthropic-ai/claude-code` |
+| `claude: command not found` | Claude Code extension may not be installed — check VS Code Extensions panel |
 | Claude login loop | Run: `claude logout` then `claude login` again |
-| Setup script exits early | Run: `bash ~/workshop-kit/setup.sh` again — it is safe to re-run |
-| Playwright not connecting | Run: `npm install -g @playwright/mcp` then try again |
-| Windows-specific issues | Check `docs/WINDOWS-SETUP.md` |
+| Bootstrap prompt fails partway | Paste the bootstrap prompt again — it is safe to re-run |
+| Playwright not connecting | Run: `claude mcp add playwright npx @playwright/mcp@latest --scope user` |
+| Windows-specific issues | Check `docs/WINDOWS-SETUP.md` — Git for Windows must be installed |
 
 ---
 
