@@ -250,8 +250,7 @@ workshop-kit/
 Your assistant is now yours. A few things to explore next:
 
 - **Create all accounts** — see [docs/ACCOUNTS-AND-LOGINS.md](docs/ACCOUNTS-AND-LOGINS.md)
-- **Add Gmail** — `claude mcp add gmail npx @gptscript-ai/gmail-mcp`
-- **Add Google Calendar** — `claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp`
+- **Add Google Workspace (Gmail + Calendar + Drive)** — ask your assistant: "Help me connect Google Workspace"
 - **Add Telegram** (get phone notifications when tasks finish) — see [docs/COMPLETION-GUIDE.md](docs/COMPLETION-GUIDE.md)
 - **Upgrade your skills** — Selr AI offers advanced skill packs for deeper automation
 

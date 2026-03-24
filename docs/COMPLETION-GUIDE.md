@@ -15,7 +15,7 @@ Tick these off:
 - [ ] Workshop kit downloaded (`git clone ...`)
 - [ ] Skills installed (check `~/.claude/skills/`)
 - [ ] Playwright (browser automation) connected
-- [ ] Gmail connected (optional — if you got to it)
+- [ ] Google Workspace connected (Gmail + Calendar) (optional — if you got to it)
 - [ ] Onboarding completed (told your assistant about your business)
 - [ ] Tested a first task with your assistant
 
@@ -40,11 +40,11 @@ Your skills were installed during the workshop setup. They live at `~/.claude/sk
 
 These are the most valuable next connections. Do them in this order:
 
-#### 1. Google Calendar (know your schedule)
+#### 1. Google Workspace (Gmail + Calendar + Drive + Docs + Sheets)
 Your assistant can help you set this up — just ask in the Claude chat:
-> "Help me connect Google Calendar so you can see my schedule."
+> "Help me connect Google Workspace so you can access my Gmail and Calendar."
 
-Now your assistant can see your calendar, find free time, and help you plan meetings.
+Once connected, your assistant can read and send emails, check your calendar, access Drive, and more.
 
 #### 2. Notion (knowledge base)
 Your assistant can help you set this up — just ask in the Claude chat:
@@ -148,9 +148,9 @@ cat ~/my-assistant/memory/USER.md
 ```
 If it says "status: not-yet-onboarded", start a new conversation and your assistant will run the onboarding questions again.
 
-### "Gmail/Calendar isn't connecting"
+### "Google Workspace isn't connecting"
 Your assistant can help you set this up — just ask in the Claude chat:
-> "Gmail/Calendar isn't working. Help me reconnect it."
+> "Google Workspace isn't working. Help me reconnect it."
 
 ### "Something broke and I don't know what"
 Tell your assistant:

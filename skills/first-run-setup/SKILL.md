@@ -69,8 +69,7 @@ os: [Mac, Windows, or Linux]
 ## Connected Tools
 - [x] Skills installed (93 skills)
 - [ ] Playwright (browser automation)
-- [ ] Gmail
-- [ ] Google Calendar
+- [ ] Google Workspace (Gmail + Calendar)
 - [ ] Telegram notifications
 ```
 

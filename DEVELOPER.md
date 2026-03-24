@@ -119,15 +119,13 @@ Windows users need Git for Windows installed before running the bootstrap prompt
 - Verify the bootstrap prompt works in Git Bash / PowerShell terminal inside VS Code
 - `docs/WINDOWS-SETUP.md` should reflect the new bootstrap flow
 
-### MEDIUM — MCP command validation
+### RESOLVED — Google Workspace MCP
 
-The MCP install commands in `COMPLETION-GUIDE.md` for Gmail and Google Calendar may be outdated:
+Gmail and Google Calendar are now handled by a single MCP:
 ```bash
-# These need to be verified against current Claude Code MCP registry:
-claude mcp add gmail npx @gptscript-ai/gmail-mcp
-claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp
+claude mcp add google-workspace -e GOOGLE_CLIENT_ID=your_id -e GOOGLE_CLIENT_SECRET=your_secret -- npx -y @taylorwilsdon/google_workspace_mcp --scope user
 ```
-Check the current Claude Code docs for correct package names.
+Requires Google Cloud project with OAuth credentials (see SETUP STEP 8 in CLAUDE.md). Covers Gmail + Calendar + Drive + Docs + Sheets.
 
 ### MEDIUM — Playwright smoke test
 
