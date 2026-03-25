@@ -126,43 +126,7 @@ Confirm: `git --version`
 
 ---
 
-### SETUP STEP 3 — Install Claude Code
-
-Run: `claude --version`
-
-- Shows version → skip to Step 4 (login check)
-- Not found → install:
-
-```bash
-npm install -g @anthropic-ai/claude-code
-```
-
-If error on Mac: `sudo npm install -g @anthropic-ai/claude-code` (password required, won't show when typing)
-If error on Windows: "Right-click on Terminal → 'Run as administrator', then try again."
-
-Confirm: `claude --version`
-
----
-
-### SETUP STEP 4 — Log In to Claude
-
-⚠️ **Claude.ai blocks automated browsers. You MUST give manual instructions for this step — do NOT attempt to navigate with Playwright.**
-
-Run: `claude login`
-
-This opens a browser window automatically.
-
-Tell them:
-> "A browser window just opened. You should see a Claude login page. Sign in with the email and password you use for claude.ai."
-
-If they do not have an account yet:
-> "You need to create a Claude account first. Open your browser manually and go to claude.ai. Click 'Get started for free'. The easiest option is 'Continue with Google' — click that and sign in with your Google account. Once you have an account, come back here and run `claude login` again."
-
-After login completes in browser, they return to terminal. Confirm by running: `echo "test" | claude -p "say the word ready"`
-
----
-
-### SETUP STEP 5 — Connect Browser Automation (MOST IMPORTANT)
+### SETUP STEP 3 — Connect Browser Automation (MOST IMPORTANT)
 
 **Say:**
 > "Now I am going to connect to your browser. This is the most important step — once this is done, I can open websites and help set everything else up automatically."
@@ -189,7 +153,7 @@ claude mcp add playwright @playwright/mcp --scope user
 
 ---
 
-### SETUP STEP 6 — Download the Workshop Kit
+### SETUP STEP 4 — Download the Workshop Kit
 
 ```bash
 git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit
@@ -214,11 +178,11 @@ cd ~/workshop-kit && bash setup.sh
 cd ~/workshop-kit && bash setup.sh
 ```
 
-Narrate as setup.sh runs. When complete: "All 16 business skills are now installed."
+Narrate as setup.sh runs. When complete: "All 94 skills are now installed."
 
 ---
 
-### SETUP STEP 7 — Open Your Workspace in VS Code
+### SETUP STEP 5 — Open Your Workspace in VS Code
 
 This step sets up their working environment so they can see all their files.
 
@@ -237,21 +201,14 @@ If `code` command not found:
 - Then run `code ~/my-assistant` again
 
 **What they should see when VS Code opens:**
-- Left panel (Explorer) shows: `CLAUDE.md`, `memory/` folder, `.mcp.json`
-- Tell them: "The file called CLAUDE.md is my brain — all my instructions are in there. The memory folder is where I save what I learn about your business."
+- Left panel (Explorer) shows: `CLAUDE.md`
+- Tell them: "The file called CLAUDE.md is my brain — all my instructions are in there."
 
-**Open the VS Code terminal:**
-- Mac: Press Ctrl+` (backtick, the key above Tab)
-- Windows: Press Ctrl+` OR go to Terminal menu → New Terminal
-
-**In that terminal, start the assistant:**
-```bash
-claude
-```
+Tell them: "Now click the Claude icon in the left sidebar to open me in this new workspace."
 
 ---
 
-### SETUP STEP 8 — Connect Google Workspace (Gmail + Calendar) — Optional
+### SETUP STEP 6 — Connect Google Workspace (Gmail + Calendar) — Optional
 
 Ask: "Would you like to connect your Gmail and Google Calendar so I can help with emails and scheduling?"
 
@@ -294,7 +251,7 @@ What this unlocks: Gmail + Google Calendar + Google Drive + Google Docs + Sheets
 
 ---
 
-### SETUP STEP 9 — Telegram Phone Notifications (Optional)
+### SETUP STEP 7 — Telegram Phone Notifications (Optional)
 
 Ask: "Would you like me to send you messages on your phone when I finish tasks?"
 
@@ -315,7 +272,7 @@ After installing and signing up with their phone number:
 
 ---
 
-### SETUP STEP 10 — Mark Setup Complete
+### SETUP STEP 8 — Mark Setup Complete
 
 Save to memory:
 - `setup_complete: true`
