@@ -153,32 +153,15 @@ claude mcp add playwright @playwright/mcp --scope user
 
 ---
 
-### SETUP STEP 4 — Download the Workshop Kit
+### SETUP STEP 4 — Verify Workshop Kit
 
+Run:
 ```bash
-git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit
+ls ~/workshop-kit/skills/ | wc -l
 ```
 
-**Mac:** If Xcode popup appears → click Install, wait, then re-run this command.
-
-**Windows — important:** The standard terminal may not work for this. If you get errors:
-1. Open "Git Bash" (search for it in the Start Menu after installing Git)
-2. Run the git clone command there
-3. Continue rest of setup in Git Bash
-
-After clone:
-
-**Mac/Linux:**
-```bash
-cd ~/workshop-kit && bash setup.sh
-```
-
-**Windows (in Git Bash):**
-```bash
-cd ~/workshop-kit && bash setup.sh
-```
-
-Narrate as setup.sh runs. When complete: "All 94 skills are now installed."
+- Shows 95 → "All 94 skills are installed. We are good to go."  → skip to Step 5
+- Shows anything else or error → say: "It looks like the workshop kit did not install correctly. Can you paste the setup prompt again from the Notion page and I will redo it?"
 
 ---
 
