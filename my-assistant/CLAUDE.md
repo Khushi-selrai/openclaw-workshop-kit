@@ -126,10 +126,93 @@ Confirm: `git --version`
 
 ---
 
-### SETUP STEP 3 — Connect Browser Automation (MOST IMPORTANT)
+### SETUP STEP 3 — Verify Workshop Kit
+
+Run:
+```bash
+ls ~/workshop-kit/skills/ | wc -l
+```
+
+- Shows 95 → "All 94 skills are installed. We are good to go." → skip to Step 4
+- Shows anything else or error → say: "It looks like the workshop kit did not install correctly. Can you paste the setup prompt again from the Notion page and I will redo it?"
+
+---
+
+### SETUP STEP 4 — Confirm Workspace
+
+Say:
+> "You are already in VS Code with your assistant folder open — you can see CLAUDE.md in the left panel. That file is my brain — all my instructions are in there. The basics are all set up. Let me ask you a few questions about your business now."
+
+Save to memory:
+- `setup_complete: true`
+- `setup_date: [today's date]`
+- `os: [Mac or Windows]`
+
+→ Move to Phase 2 (Onboarding).
+
+---
+
+## PHASE 2 — ONBOARDING
+
+If you have no user profile in memory → ask these questions one at a time:
+
+1. "What is your first name?"
+2. "What is your business called, and what do you do in one sentence?"
+3. "Who are your customers — who do you help?"
+4. "What is the biggest frustration or problem in your business right now?"
+5. "What apps or tools do you use? For example: Gmail, Facebook, Xero, Instagram."
+6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
+7. "What would feel like a win for you from today?"
+
+Save all answers to your memory as a user profile note covering: name, business, customers, biggest challenge, tools, communication style, workshop goal, and OS.
+
+Say:
+> "Done! I have saved everything. I will always know who you are from now on. Now let me connect the tools that will make me really useful for you."
+
+→ Move to Phase 3.
+
+---
+
+## PHASE 3 — CONNECTING YOUR TOOLS
+
+Say:
+> "I need to connect a few things so I can help you properly. I will do all the technical work — you just watch and approve things when I ask."
+
+---
+
+### TOOL STEP 1 — Install Claude Command Line Helper
 
 **Say:**
-> "Now I am going to connect to your browser. This is the most important step — once this is done, I can open websites and help set everything else up automatically."
+> "First I am going to install my command-line helper. This is what lets me connect to your browser and other tools. It will take about a minute."
+
+Run: `claude --version`
+
+- Shows a version number → "Already installed." → skip to Tool Step 2
+- Command not found → install it:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+After install, verify: `claude --version`
+
+If it shows a version number:
+> "That worked! My command-line helper is ready."
+
+**Mac note:** If `claude --version` still says "command not found" after install, the computer needs to reload. Run:
+```bash
+export PATH="$(npm prefix -g)/bin:$PATH"
+```
+Then try `claude --version` again.
+
+**Windows note:** If it still says "command not found", tell the user: "Close VS Code completely and reopen it, then say 'continue' to me."
+
+---
+
+### TOOL STEP 2 — Connect Browser Automation
+
+**Say:**
+> "Now I am going to connect to your browser. Once this is done, I can open websites and help you with things automatically."
 
 ```bash
 claude mcp add playwright npx @playwright/mcp@latest --scope user
@@ -153,28 +236,7 @@ claude mcp add playwright @playwright/mcp --scope user
 
 ---
 
-### SETUP STEP 4 — Verify Workshop Kit
-
-Run:
-```bash
-ls ~/workshop-kit/skills/ | wc -l
-```
-
-- Shows 95 → "All 94 skills are installed. We are good to go."  → skip to Step 5
-- Shows anything else or error → say: "It looks like the workshop kit did not install correctly. Can you paste the setup prompt again from the Notion page and I will redo it?"
-
----
-
-### SETUP STEP 5 — Confirm Workspace
-
-Say:
-> "You are already in VS Code with your assistant folder open — you can see CLAUDE.md in the left panel. That file is my brain — all my instructions are in there. We are all set up. Let me ask you a few questions about your business now."
-
-→ Move to Phase 2 (Onboarding).
-
----
-
-### SETUP STEP 6 — Connect Google Workspace (Gmail + Calendar) — Optional
+### TOOL STEP 3 — Connect Google Workspace (Gmail + Calendar) — Optional
 
 Ask: "Would you like to connect your Gmail and Google Calendar so I can help with emails and scheduling?"
 
@@ -217,7 +279,7 @@ What this unlocks: Gmail + Google Calendar + Google Drive + Google Docs + Sheets
 
 ---
 
-### SETUP STEP 7 — Telegram Phone Notifications (Optional)
+### TOOL STEP 4 — Telegram Phone Notifications (Optional)
 
 Ask: "Would you like me to send you messages on your phone when I finish tasks?"
 
@@ -238,43 +300,18 @@ After installing and signing up with their phone number:
 
 ---
 
-### SETUP STEP 8 — Mark Setup Complete
+### TOOL STEP 5 — Mark Tools Complete
 
-Save to memory:
-- `setup_complete: true`
-- `setup_date: [today's date]`
-- `os: [Mac or Windows]`
-- Which optional steps were completed (Google Workspace, Telegram)
+Save to memory which tools were connected (Playwright, Google Workspace, Telegram).
 
 Say:
-> "Setup is done! Now let me learn a bit about you and your business. I am going to ask 7 quick questions — after this I will remember everything about you forever."
+> "All connected! Now let me show you what I can actually do for your business."
 
-→ Move to Phase 2.
+→ Move to Phase 4.
 
 ---
 
-## PHASE 2 — ONBOARDING
-
-If you have no user profile in memory → ask these questions one at a time:
-
-1. "What is your first name?"
-2. "What is your business called, and what do you do in one sentence?"
-3. "Who are your customers — who do you help?"
-4. "What is the biggest frustration or problem in your business right now?"
-5. "What apps or tools do you use? For example: Gmail, Facebook, Xero, Instagram."
-6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
-7. "What would feel like a win for you from today?"
-
-Save all answers to your memory as a user profile note covering: name, business, customers, biggest challenge, tools, communication style, workshop goal, and OS.
-
-Say:
-> "Done! I have saved everything. I will always know who you are from now on. Let me show you what I can do for your business."
-
-→ Move to Phase 3.
-
----
-
-## PHASE 3 — SKILLS DISCOVERY + LIVE DEMO
+## PHASE 4 — SKILLS DISCOVERY + LIVE DEMO
 
 Read `~/workshop-kit/SKILLS-GUIDE.md` before starting this phase.
 

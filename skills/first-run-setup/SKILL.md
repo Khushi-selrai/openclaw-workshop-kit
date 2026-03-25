@@ -123,7 +123,71 @@ os: [their OS]
 ```
 
 Say:
-> "Done! I have saved everything. I will always know who you are from now on. Let me show you what I can do for your business."
+> "Done! I have saved everything. I will always know who you are from now on. Now let me connect the tools that will make me really useful for you."
+
+→ Move to Phase 2.5.
+
+---
+
+## PHASE 2.5 — CONNECT TOOLS
+
+Say:
+> "I need to connect a few things so I can help you properly. I will do all the technical work — you just watch and approve things when I ask."
+
+### Step 1 — Install Claude Command Line Helper
+
+Say:
+> "First I am going to install my command-line helper. This is what lets me connect to your browser and other tools. It will take about a minute."
+
+Run: `claude --version`
+
+- Shows a version number → "Already installed." → skip to Step 2
+- Command not found → install it:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+After install, verify: `claude --version`
+
+If it shows a version number:
+> "That worked! My command-line helper is ready."
+
+**Mac note:** If `claude --version` still says "command not found" after install, run:
+```bash
+export PATH="$(npm prefix -g)/bin:$PATH"
+```
+Then try `claude --version` again.
+
+**Windows note:** If it still says "command not found", tell the user: "Close VS Code completely and reopen it, then say 'continue' to me."
+
+### Step 2 — Connect Browser Automation
+
+Say:
+> "Now I am going to connect to your browser. Once this is done, I can open websites and help you with things automatically."
+
+```bash
+claude mcp add playwright npx @playwright/mcp@latest --scope user
+```
+
+Verify:
+```bash
+claude mcp list
+```
+
+Look for `playwright` in the list. If it is there:
+> "Your browser remote control is connected."
+
+If it failed, try:
+```bash
+npm install -g @playwright/mcp
+claude mcp add playwright @playwright/mcp --scope user
+```
+
+Save to memory which tools were connected.
+
+Say:
+> "All connected! Now let me show you what I can actually do for your business."
 
 → Move to Phase 3.
 
