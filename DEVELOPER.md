@@ -1,8 +1,8 @@
 # Developer Notes — OpenClaw Workshop Kit
 
 **Repo:** https://github.com/luke-selrai/openclaw-workshop-kit
-**Contact:** Luke Heka — luke@selrai.com.au
-**Workshop:** Tomorrow (Mar 17/19), 20 non-technical business owners, 3 hours
+**Contact:** Workshop facilitator — see your team contacts
+**Workshop:** [DATE TBD], non-technical business owners, 3 hours
 
 ---
 
@@ -20,8 +20,6 @@ A self-installing AI business assistant kit. Non-technical business owners:
 
 ```
 openclaw-workshop-kit/
-├── CLAUDE.md                        # Pointer to my-assistant/CLAUDE.md (not used by the assistant)
-├── setup.sh.deprecated              # Old bash installer (kept for reference only)
 ├── README.md                        # End-user quickstart
 │
 ├── my-assistant/                    # THIS is what gets copied to ~/my-assistant/
@@ -31,28 +29,14 @@ openclaw-workshop-kit/
 │       ├── SETUP.md                 # Setup status tracker
 │       └── MEMORY.md               # Persistent memory across conversations
 │
-├── skills/                          # 92 bundled business skills
-│   ├── humanizer/
-│   ├── deep-research/
-│   ├── copywriting/
-│   ├── email-sequence/
-│   ├── social-content/
-│   ├── content-creator/
-│   ├── sales-automator/
-│   ├── brainstorming/
-│   ├── youtube-summarizer/
-│   ├── reddit-insights/
-│   ├── competitor-alternatives/
-│   ├── avoid-ai-writing/
-│   ├── research-analyst/
-│   ├── prompt-engineer/
-│   ├── systematic-debugging/
-│   └── writing-plans/
+├── skills/                          # 94 bundled business skills
+│   ├── [25 CORE skills]             # Surfaced to all attendees via skills-discovery
+│   ├── [~61 ADVANCED skills]        # Available on request
+│   └── [8 DEVELOPER-ONLY skills]    # For web app / technical integration use cases
 │
 ├── docs/
-│   ├── PRE-WORKSHOP-CHECKLIST.md    # Send to attendees the day before
+│   ├── BOOTSTRAP.md                 # Version-controlled copy of the Notion bootstrap prompt
 │   ├── SUBSCRIPTIONS-AND-SOFTWARE.md # Full cost breakdown
-│   ├── WORKSHOP-RUNSHEET.md         # Luke's 3-hour facilitator script
 │   ├── FIRST-5-PROMPTS.md           # Print + hand out — copy-paste prompts
 │   ├── GLOSSARY.md                  # Plain-English tech terms
 │   ├── COMPLETION-GUIDE.md          # Finishing setup at home after workshop
@@ -90,9 +74,7 @@ The user opens `~/my-assistant/` in VS Code and starts Claude Code. Claude reads
 
 **Key design decisions:**
 - The Notion page is the single source of truth for attendees — the bootstrap prompt lives there and can be updated without pushing to GitHub
-- The root `CLAUDE.md` is now just a brief pointer to `my-assistant/CLAUDE.md`
 - Playwright MCP is added via `claude mcp add` at the user scope, not via a `.mcp.json` file in the workspace
-- `setup.sh` has been renamed to `setup.sh.deprecated` and kept for reference only
 
 ---
 
@@ -176,5 +158,5 @@ For pushing updates to everyone: just commit to `main`. Next time they pull, the
 
 ## Questions
 
-Anything unclear — ask Luke. He knows this system deeply.
+Anything unclear — reach out to the workshop facilitator via your team contacts.
 

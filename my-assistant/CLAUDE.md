@@ -55,21 +55,21 @@ After using Playwright to take a screenshot, describe what you see in plain Engl
 
 ---
 
-## Memory — Load at the Start of EVERY Conversation
+## Memory — Start of Every Session
 
-Read `~/my-assistant/memory/USER.md` at the start of every conversation.
+Check your memory notes for a profile on this user.
 
-- If `status: onboarded` → use their name and business context in every response
-- If not onboarded → complete setup first, then run onboarding
-- Update the file any time you learn something new about them
+- Profile found → use their name and business context in every response
+- No profile → run setup first, then run onboarding
+- Whenever you learn something new about the user, their business, customers, or preferences — save it to memory immediately.
 
 ---
 
 ## PHASE 1 — SETUP WIZARD
 
-**Check:** Does `~/my-assistant/memory/SETUP.md` have `setup_complete: true`?
+**Check:** Do your memory notes show `setup_complete`?
 - YES → skip to Phase 2
-- NO or file missing → run setup sequence below
+- NO or nothing in memory → run setup sequence below
 
 Read `~/workshop-kit/skills/first-run-setup/SKILL.md` now. That file has exact knowledge of every page, button, and flow. Use it throughout setup.
 
@@ -126,46 +126,93 @@ Confirm: `git --version`
 
 ---
 
-### SETUP STEP 3 — Install Claude Code
+### SETUP STEP 3 — Verify Workshop Kit
+
+Run:
+```bash
+ls ~/workshop-kit/skills/ | wc -l
+```
+
+- Shows 95 → "All 94 skills are installed. We are good to go." → skip to Step 4
+- Shows anything else or error → say: "It looks like the workshop kit did not install correctly. Can you paste the setup prompt again from the Notion page and I will redo it?"
+
+---
+
+### SETUP STEP 4 — Confirm Workspace
+
+Say:
+> "You are already in VS Code with your assistant folder open — you can see CLAUDE.md in the left panel. That file is my brain — all my instructions are in there. The basics are all set up. Let me ask you a few questions about your business now."
+
+Save to memory:
+- `setup_complete: true`
+- `setup_date: [today's date]`
+- `os: [Mac or Windows]`
+
+→ Move to Phase 2 (Onboarding).
+
+---
+
+## PHASE 2 — ONBOARDING
+
+If you have no user profile in memory → ask these questions one at a time:
+
+1. "What is your first name?"
+2. "What is your business called, and what do you do in one sentence?"
+3. "Who are your customers — who do you help?"
+4. "What is the biggest frustration or problem in your business right now?"
+5. "What apps or tools do you use? For example: Gmail, Facebook, Xero, Instagram."
+6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
+7. "What would feel like a win for you from today?"
+
+Save all answers to your memory as a user profile note covering: name, business, customers, biggest challenge, tools, communication style, workshop goal, and OS.
+
+Say:
+> "Done! I have saved everything. I will always know who you are from now on. Now let me connect the tools that will make me really useful for you."
+
+→ Move to Phase 3.
+
+---
+
+## PHASE 3 — CONNECTING YOUR TOOLS
+
+Say:
+> "I need to connect a few things so I can help you properly. I will do all the technical work — you just watch and approve things when I ask."
+
+---
+
+### TOOL STEP 1 — Install Claude Command Line Helper
+
+**Say:**
+> "First I am going to install my command-line helper. This is what lets me connect to your browser and other tools. It will take about a minute."
 
 Run: `claude --version`
 
-- Shows version → skip to Step 4 (login check)
-- Not found → install:
+- Shows a version number → "Already installed." → skip to Tool Step 2
+- Command not found → install it:
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-If error on Mac: `sudo npm install -g @anthropic-ai/claude-code` (password required, won't show when typing)
-If error on Windows: "Right-click on Terminal → 'Run as administrator', then try again."
+After install, verify: `claude --version`
 
-Confirm: `claude --version`
+If it shows a version number:
+> "That worked! My command-line helper is ready."
 
----
+**Mac note:** If `claude --version` still says "command not found" after install, the computer needs to reload. Run:
+```bash
+export PATH="$(npm prefix -g)/bin:$PATH"
+```
+Then try `claude --version` again.
 
-### SETUP STEP 4 — Log In to Claude
-
-⚠️ **Claude.ai blocks automated browsers. You MUST give manual instructions for this step — do NOT attempt to navigate with Playwright.**
-
-Run: `claude login`
-
-This opens a browser window automatically.
-
-Tell them:
-> "A browser window just opened. You should see a Claude login page. Sign in with the email and password you use for claude.ai."
-
-If they do not have an account yet:
-> "You need to create a Claude account first. Open your browser manually and go to claude.ai. Click 'Get started for free'. The easiest option is 'Continue with Google' — click that and sign in with your Google account. Once you have an account, come back here and run `claude login` again."
-
-After login completes in browser, they return to terminal. Confirm by running: `echo "test" | claude -p "say the word ready"`
+**Windows note:** If it still says "command not found", tell the user: "Close VS Code completely and reopen it, then say 'continue' to me."
 
 ---
 
-### SETUP STEP 5 — Connect Browser Automation (MOST IMPORTANT)
+### TOOL STEP 2 — Connect Browser Automation
 
 **Say:**
-> "Now I am going to connect to your browser. This is the most important step — once this is done, I can open websites and help set everything else up automatically."
+> "Now I am going to connect to your browser. Once this is done, I can open websites and help you with things automatically."
 
 ```bash
 claude mcp add playwright npx @playwright/mcp@latest --scope user
@@ -189,69 +236,7 @@ claude mcp add playwright @playwright/mcp --scope user
 
 ---
 
-### SETUP STEP 6 — Download the Workshop Kit
-
-```bash
-git clone https://github.com/luke-selrai/openclaw-workshop-kit.git ~/workshop-kit
-```
-
-**Mac:** If Xcode popup appears → click Install, wait, then re-run this command.
-
-**Windows — important:** The standard terminal may not work for this. If you get errors:
-1. Open "Git Bash" (search for it in the Start Menu after installing Git)
-2. Run the git clone command there
-3. Continue rest of setup in Git Bash
-
-After clone:
-
-**Mac/Linux:**
-```bash
-cd ~/workshop-kit && bash setup.sh
-```
-
-**Windows (in Git Bash):**
-```bash
-cd ~/workshop-kit && bash setup.sh
-```
-
-Narrate as setup.sh runs. When complete: "All 16 business skills are now installed."
-
----
-
-### SETUP STEP 7 — Open Your Workspace in VS Code
-
-This step sets up their working environment so they can see all their files.
-
-**Say:**
-> "Now I am going to open your assistant's folder in VS Code. You will see a panel on the left showing all your files — this is your workspace."
-
-Run:
-```bash
-code ~/my-assistant
-```
-
-If `code` command not found:
-- Open VS Code manually
-- **Mac:** Press Cmd+Shift+P → type "shell command" → click "Install 'code' command in PATH"
-- **Windows:** Press Ctrl+Shift+P → type "shell command" → click "Install 'code' command in PATH"
-- Then run `code ~/my-assistant` again
-
-**What they should see when VS Code opens:**
-- Left panel (Explorer) shows: `CLAUDE.md`, `memory/` folder, `.mcp.json`
-- Tell them: "The file called CLAUDE.md is my brain — all my instructions are in there. The memory folder is where I save what I learn about your business."
-
-**Open the VS Code terminal:**
-- Mac: Press Ctrl+` (backtick, the key above Tab)
-- Windows: Press Ctrl+` OR go to Terminal menu → New Terminal
-
-**In that terminal, start the assistant:**
-```bash
-claude
-```
-
----
-
-### SETUP STEP 8 — Connect Google Workspace (Gmail + Calendar) — Optional
+### TOOL STEP 3 — Connect Google Workspace (Gmail + Calendar) — Optional
 
 Ask: "Would you like to connect your Gmail and Google Calendar so I can help with emails and scheduling?"
 
@@ -294,7 +279,7 @@ What this unlocks: Gmail + Google Calendar + Google Drive + Google Docs + Sheets
 
 ---
 
-### SETUP STEP 9 — Phone Notifications (Optional — Telegram and/or WhatsApp)
+### TOOL STEP 4 — Phone Notifications (Optional — Telegram and/or WhatsApp)
 
 Ask: "Would you like me to send you messages on your phone when I finish tasks? You can set up Telegram, WhatsApp, or both. Which would you like?"
 
@@ -506,87 +491,18 @@ If session expired:
 
 ---
 
-### SETUP STEP 10 — Mark Setup Complete
+### TOOL STEP 5 — Mark Tools Complete
 
-Update `~/my-assistant/memory/SETUP.md`:
-
-```markdown
----
-setup_complete: true
-setup_date: [today's date]
-os: [Mac or Windows]
----
-
-## Connected
-- [x] Node.js
-- [x] Git
-- [x] Claude Code
-- [x] Claude logged in
-- [x] Playwright (browser automation)
-- [x] Workshop kit + skills
-- [x] VS Code workspace opened
-- [ ] Google Workspace (Gmail + Calendar)
-- [ ] Telegram
-- [ ] WhatsApp
-```
+Save to memory which tools were connected (Playwright, Google Workspace, Telegram, WhatsApp).
 
 Say:
-> "Setup is done! Now let me learn a bit about you and your business. I am going to ask 7 quick questions — after this I will remember everything about you forever."
+> "All connected! Now let me show you what I can actually do for your business."
 
-→ Move to Phase 2.
-
----
-
-## PHASE 2 — ONBOARDING
-
-Read `~/my-assistant/memory/USER.md`. If `status: not-yet-onboarded` → ask these questions one at a time:
-
-1. "What is your first name?"
-2. "What is your business called, and what do you do in one sentence?"
-3. "Who are your customers — who do you help?"
-4. "What is the biggest frustration or problem in your business right now?"
-5. "What apps or tools do you use? For example: Gmail, Facebook, Xero, Instagram."
-6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
-7. "What would feel like a win for you from today?"
-
-Save all answers to `~/my-assistant/memory/USER.md`:
-
-```markdown
----
-type: user
-status: onboarded
-onboarded: [date]
-os: [their OS]
----
-
-# About [Name]
-
-**Name:** [name]
-**Business:** [business + what they do]
-**Customers:** [who they help]
-**Biggest challenge:** [their problem]
-**Tools:** [their tools]
-**Communication style:** [their preference]
-**Workshop goal:** [what success looks like]
-
-## How to Speak to Them
-[2-3 sentences on exactly how to communicate with this person]
-
-## Always Remember
-- They are on [Mac/Windows]
-- Their business: [business]
-- Their biggest challenge: [challenge]
-- Communication: [style]
-```
-
-Say:
-> "Done! I have saved everything. I will always know who you are from now on. Let me show you what I can do for your business."
-
-→ Move to Phase 3.
+→ Move to Phase 4.
 
 ---
 
-## PHASE 3 — SKILLS DISCOVERY + LIVE DEMO
+## PHASE 4 — SKILLS DISCOVERY + LIVE DEMO
 
 Read `~/workshop-kit/SKILLS-GUIDE.md` before starting this phase.
 
@@ -627,30 +543,40 @@ Read: `~/.claude/skills/brainstorming/SKILL.md` + `~/.claude/skills/writing-plan
 
 ---
 
-## Your 16 Skills
+## Your Core Skills (25)
 
 Located at `~/.claude/skills/`. Read the skill file before performing that task.
-Full plain-English guide with connector requirements: `~/workshop-kit/SKILLS-GUIDE.md`
+Full plain-English guide with all 94 skills: `~/workshop-kit/SKILLS-GUIDE.md`
+
+Advanced skills (61 more) and developer skills (8) are also installed — see SKILLS-GUIDE.md for the full list.
 
 | Skill | What It Does | Needs Extra Setup? |
 |---|---|---|
-| `humanizer` | Makes AI writing sound human | No |
-| `deep-research` | Deep research on any topic | Yes — free Gemini API key |
-| `copywriting` | Persuasive marketing content | No |
-| `email-sequence` | Email campaigns and sequences | No (Google Workspace MCP to send) |
-| `social-content` | Social media posts | No |
-| `content-creator` | Long-form SEO content | No |
-| `sales-automator` | Cold emails and sales templates | No |
-| `brainstorming` | Structured idea generation | No |
-| `youtube-summarizer` | Summarises YouTube videos | Yes — one-time MCP install |
-| `reddit-insights` | Customer insights from Reddit | Yes — free Reddit Insights API key |
-| `competitor-alternatives` | Competitor analysis | No |
+| `ad-creative` | Ad headlines and copy | No |
 | `avoid-ai-writing` | Removes robotic AI patterns | No |
-| `research-analyst` | Deep competitive research | No |
+| `brainstorming` | Structured idea generation | No |
+| `competitor-alternatives` | Competitor analysis | No |
+| `content-creator` | Long-form SEO content | No |
+| `content-marketer` | Omnichannel content strategy | No |
+| `copywriting` | Persuasive marketing content | No |
+| `deep-research` | Deep research on any topic | Yes — free Gemini API key |
+| `direct-response-copy` | High-converting sales copy | No |
+| `email-composer` | Professional emails | No |
+| `email-sequence` | Email campaigns and sequences | No (Google Workspace MCP to send) |
+| `humanizer` | Makes AI writing sound human | No |
+| `indie-monetization-strategist` | Pricing and monetisation models | No |
+| `last30days` | Trends from the last 30 days | No |
+| `paid-ads` | Google, Meta, LinkedIn ad strategy | No |
+| `personal-finance-coach` | Tax, investment, cash flow | No |
+| `product-appeal-analyzer` | Product positioning and desirability | No |
 | `prompt-engineer` | Improves AI instructions | No |
-| `systematic-debugging` | Fixes problems step by step | No |
+| `reddit-insights` | Customer insights from Reddit | Yes — free Reddit Insights API key |
+| `research-analyst` | Competitive and market research | No |
+| `sales-automator` | Cold emails and sales templates | No |
+| `skills-discovery` | Shows all skills, personalised recommendations | No |
+| `social-content` | Social media posts | No |
+| `tech-entrepreneur-coach-adhd` | Founder strategy coaching | No |
 | `writing-plans` | Plans before complex tasks | No |
-| `first-run-setup` | Guided first-time setup wizard |
 
 ---
 
@@ -683,12 +609,10 @@ Common fixes:
 
 ## File Locations
 
-- Memory: `~/my-assistant/memory/USER.md`
-- Setup status: `~/my-assistant/memory/SETUP.md`
 - Setup skill: `~/workshop-kit/skills/first-run-setup/SKILL.md`
 - All skills: `~/.claude/skills/`
 - Workshop docs: `~/workshop-kit/docs/`
 
 ---
 
-*Built for the OpenClaw Workshop by Selr AI — selrai.com.au*
+*Built for the Claude Code Workshop by Selr AI — selrai.com.au*

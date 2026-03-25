@@ -20,7 +20,7 @@
 │  │                                                                       │    │
 │  │   Reads:  CLAUDE.md — your instructions                              │    │
 │  │   Knows:  memory/USER.md — your business permanently                 │    │
-│  │   Uses:   92 skills — specialist capabilities on demand              │    │
+│  │   Uses:   94 skills — specialist capabilities on demand              │    │
 │  │   Via:    CLI tools · MCP connections · Browser automation           │    │
 │  └───────┬──────────────┬───────────────────┬────────────────┬─────────┘    │
 │          │              │                   │                │               │
@@ -185,7 +185,6 @@ You just did. You set it up today. The hard part is done.
 - **Windows guide:** `~/workshop-kit/docs/WINDOWS-SETUP.md`
 - **Skills reference:** `~/workshop-kit/docs/SKILLS-REFERENCE.md`
 - **Selr AI:** selrai.com.au
-- **Email:** luke@selrai.com.au
 
 > The best way to learn is to just try things. Ask Claude to do something for your business right now. You can't break anything that can't be fixed in 30 seconds.
 
