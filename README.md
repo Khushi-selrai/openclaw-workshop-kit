@@ -13,7 +13,7 @@ This kit sets up a personal AI business assistant on your laptop. Not a chatbot 
 - **Remembers your business** — your name, your customers, your biggest challenges
 - **Lives on your computer** — runs locally, not in a browser tab
 - **Controls your browser** — can open websites, fill forms, and do research for you
-- **Has 92 specialist skills** — research, copywriting, sales emails, social content, competitor analysis, and more
+- **Has 94 specialist skills** — research, copywriting, sales emails, social content, competitor analysis, and more
 - **Gets smarter over time** — every conversation builds on the last
 
 It is built on [Claude Code](https://claude.ai/claude-code) by Anthropic — the same AI that powers Claude, configured specifically for your business.
@@ -36,7 +36,7 @@ Your Laptop
          └── Claude Code (your AI assistant)
               ├── CLAUDE.md (your assistant's instructions + memory loader)
               ├── memory/ (saves what it learns about you)
-              ├── skills/ (16 specialist capabilities)
+              ├── skills/ (94 specialist skills)
               └── Playwright (browser remote control)
 ```
 
@@ -61,7 +61,7 @@ After that, every time you open VS Code and type `claude`, your assistant alread
 
 **Windows users:** also install [Git for Windows](https://gitforwindows.org) — see [docs/WINDOWS-SETUP.md](docs/WINDOWS-SETUP.md) before arriving.
 
-No other pre-installs needed on Mac. Full checklist: [docs/PRE-WORKSHOP-CHECKLIST.md](docs/PRE-WORKSHOP-CHECKLIST.md)
+No other pre-installs needed on Mac.
 
 ---
 
@@ -77,11 +77,11 @@ Your assistant handles it all conversationally, one step at a time. No scripts t
 
 ---
 
-## Your 92 Skills
+## Your 94 Skills
 
 Skills are specialist capabilities your assistant can use. Think of them like switching your assistant from "general helper" to "expert copywriter", "market researcher", "DevOps engineer", or "product strategist" for a specific task.
 
-This kit includes the full professional skill library — the same depth used to power Selr AI's infrastructure.
+This kit includes the full professional skill library — the same depth used to power Selr AI's infrastructure. See [docs/SKILLS-REFERENCE.md](docs/SKILLS-REFERENCE.md) for descriptions of every skill, and [docs/BOOTSTRAP.md](docs/BOOTSTRAP.md) for the version-controlled bootstrap prompt.
 
 **Marketing & Content**
 
@@ -221,23 +221,20 @@ This kit includes the full professional skill library — the same depth used to
 
 ```text
 workshop-kit/
-├── CLAUDE.md                    # Pointer to my-assistant/CLAUDE.md
-├── setup.sh.deprecated          # Old installer (kept for reference only)
 ├── my-assistant/                # Copied to ~/my-assistant/ on your computer
 │   ├── CLAUDE.md                # Your assistant's brain — instructions + onboarding agent
 │   └── memory/                  # Where your assistant saves what it learns
 │       ├── USER.md              # Your profile (filled in on first run)
 │       ├── SETUP.md             # Setup completion status
 │       └── MEMORY.md            # Persistent memory across conversations
-├── skills/                      # 92 skills (installed to ~/.claude/skills/)
+├── skills/                      # 94 skills (installed to ~/.claude/skills/)
 ├── docs/
-│   ├── PRE-WORKSHOP-CHECKLIST.md   # What to do before arriving
-│   ├── WINDOWS-SETUP.md            # Step-by-step Windows guide
-│   ├── COMPLETION-GUIDE.md         # What to do after the workshop
-│   ├── SKILLS-REFERENCE.md         # How to use each skill
-│   ├── WORKSHOP-RUNSHEET.md        # Luke's facilitator script (3-hour runsheet)
-│   ├── FIRST-5-PROMPTS.md          # Copy-paste prompts to get started
-│   ├── ACCOUNTS-AND-LOGINS.md          # Every account to create (with links)
+│   ├── BOOTSTRAP.md             # Version-controlled copy of the bootstrap prompt
+│   ├── WINDOWS-SETUP.md         # Step-by-step Windows guide
+│   ├── COMPLETION-GUIDE.md      # What to do after the workshop
+│   ├── SKILLS-REFERENCE.md      # How to use each skill
+│   ├── FIRST-5-PROMPTS.md       # Copy-paste prompts to get started
+│   ├── ACCOUNTS-AND-LOGINS.md   # Every account to create (with links)
 │   ├── SUBSCRIPTIONS-AND-SOFTWARE.md  # What costs what
 │   └── GLOSSARY.md              # Plain English definitions of every tech term
 └── visuals/                     # Printable explainer pages (4 pages, PNG + MD)
@@ -284,8 +281,6 @@ See [DEVELOPER.md](DEVELOPER.md).
 - Workshop guides: [`docs/`](docs/)
 - Windows guide: [`docs/WINDOWS-SETUP.md`](docs/WINDOWS-SETUP.md)
 - Selr AI: [selrai.com.au](https://selrai.com.au)
-- Email: [luke@selrai.com.au](mailto:luke@selrai.com.au)
-
 ---
 
-OpenClaw Workshop Kit — March 2026 — Built by Selr AI
+OpenClaw Workshop Kit — Built by Selr AI

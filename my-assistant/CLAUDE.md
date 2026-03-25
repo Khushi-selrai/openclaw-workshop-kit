@@ -435,30 +435,40 @@ Read: `~/.claude/skills/brainstorming/SKILL.md` + `~/.claude/skills/writing-plan
 
 ---
 
-## Your 16 Skills
+## Your Core Skills (25)
 
 Located at `~/.claude/skills/`. Read the skill file before performing that task.
-Full plain-English guide with connector requirements: `~/workshop-kit/SKILLS-GUIDE.md`
+Full plain-English guide with all 94 skills: `~/workshop-kit/SKILLS-GUIDE.md`
+
+Advanced skills (61 more) and developer skills (8) are also installed — see SKILLS-GUIDE.md for the full list.
 
 | Skill | What It Does | Needs Extra Setup? |
 |---|---|---|
-| `humanizer` | Makes AI writing sound human | No |
-| `deep-research` | Deep research on any topic | Yes — free Gemini API key |
-| `copywriting` | Persuasive marketing content | No |
-| `email-sequence` | Email campaigns and sequences | No (Google Workspace MCP to send) |
-| `social-content` | Social media posts | No |
-| `content-creator` | Long-form SEO content | No |
-| `sales-automator` | Cold emails and sales templates | No |
-| `brainstorming` | Structured idea generation | No |
-| `youtube-summarizer` | Summarises YouTube videos | Yes — one-time MCP install |
-| `reddit-insights` | Customer insights from Reddit | Yes — free Reddit Insights API key |
-| `competitor-alternatives` | Competitor analysis | No |
+| `ad-creative` | Ad headlines and copy | No |
 | `avoid-ai-writing` | Removes robotic AI patterns | No |
-| `research-analyst` | Deep competitive research | No |
+| `brainstorming` | Structured idea generation | No |
+| `competitor-alternatives` | Competitor analysis | No |
+| `content-creator` | Long-form SEO content | No |
+| `content-marketer` | Omnichannel content strategy | No |
+| `copywriting` | Persuasive marketing content | No |
+| `deep-research` | Deep research on any topic | Yes — free Gemini API key |
+| `direct-response-copy` | High-converting sales copy | No |
+| `email-composer` | Professional emails | No |
+| `email-sequence` | Email campaigns and sequences | No (Google Workspace MCP to send) |
+| `humanizer` | Makes AI writing sound human | No |
+| `indie-monetization-strategist` | Pricing and monetisation models | No |
+| `last30days` | Trends from the last 30 days | No |
+| `paid-ads` | Google, Meta, LinkedIn ad strategy | No |
+| `personal-finance-coach` | Tax, investment, cash flow | No |
+| `product-appeal-analyzer` | Product positioning and desirability | No |
 | `prompt-engineer` | Improves AI instructions | No |
-| `systematic-debugging` | Fixes problems step by step | No |
+| `reddit-insights` | Customer insights from Reddit | Yes — free Reddit Insights API key |
+| `research-analyst` | Competitive and market research | No |
+| `sales-automator` | Cold emails and sales templates | No |
+| `skills-discovery` | Shows all skills, personalised recommendations | No |
+| `social-content` | Social media posts | No |
+| `tech-entrepreneur-coach-adhd` | Founder strategy coaching | No |
 | `writing-plans` | Plans before complex tasks | No |
-| `first-run-setup` | Guided first-time setup wizard |
 
 ---
 
