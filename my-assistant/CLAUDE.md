@@ -165,29 +165,12 @@ ls ~/workshop-kit/skills/ | wc -l
 
 ---
 
-### SETUP STEP 5 — Open Your Workspace in VS Code
+### SETUP STEP 5 — Confirm Workspace
 
-This step sets up their working environment so they can see all their files.
+Say:
+> "You are already in VS Code with your assistant folder open — you can see CLAUDE.md in the left panel. That file is my brain — all my instructions are in there. We are all set up. Let me ask you a few questions about your business now."
 
-**Say:**
-> "Now I am going to open your assistant's folder in VS Code. You will see a panel on the left showing all your files — this is your workspace."
-
-Run:
-```bash
-code ~/my-assistant
-```
-
-If `code` command not found:
-- Open VS Code manually
-- **Mac:** Press Cmd+Shift+P → type "shell command" → click "Install 'code' command in PATH"
-- **Windows:** Press Ctrl+Shift+P → type "shell command" → click "Install 'code' command in PATH"
-- Then run `code ~/my-assistant` again
-
-**What they should see when VS Code opens:**
-- Left panel (Explorer) shows: `CLAUDE.md`
-- Tell them: "The file called CLAUDE.md is my brain — all my instructions are in there."
-
-Tell them: "Now click the Claude icon in the left sidebar to open me in this new workspace."
+→ Move to Phase 2 (Onboarding).
 
 ---
 
