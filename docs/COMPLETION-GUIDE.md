@@ -58,9 +58,11 @@ Your assistant can help you set this up — just ask in the Claude chat:
 
 ---
 
-### Set Up Telegram Notifications
+### Set Up Phone Notifications (Telegram and/or WhatsApp)
 
-This lets your AI assistant send you messages on your phone. Very useful when it finishes a task.
+This lets your AI assistant send you messages on your phone. Very useful when it finishes a task. You can set up one or both — they work independently.
+
+#### Telegram
 
 **Step 1:** Download Telegram on your phone (free)
 **Step 2:** Search for `@BotFather` in Telegram
@@ -68,6 +70,15 @@ This lets your AI assistant send you messages on your phone. Very useful when it
 **Step 4:** Copy your bot token
 **Step 5:** Tell your assistant: "I want to set up Telegram notifications. My bot token is: [your token]"
 **Step 6:** Your assistant handles the rest
+
+#### WhatsApp
+
+Your assistant connects to WhatsApp via QR code — no Business API needed.
+
+**Step 1:** Make sure WhatsApp is installed on your phone
+**Step 2:** Tell your assistant: "I want to set up WhatsApp notifications"
+**Step 3:** Your assistant will show a QR code — scan it with WhatsApp (Settings > Linked Devices > Link a Device)
+**Step 4:** Once linked, your assistant can send you messages and you can reply directly from WhatsApp
 
 ---
 

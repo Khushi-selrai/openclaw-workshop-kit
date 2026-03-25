@@ -229,6 +229,8 @@ workshop-kit/
 │       ├── USER.md              # Your profile (filled in on first run)
 │       ├── SETUP.md             # Setup completion status
 │       └── MEMORY.md            # Persistent memory across conversations
+├── whatsapp-channel/            # Optional WhatsApp integration (can use alongside Telegram)
+│   └── src/                    # QR-code login, two-way messaging, permission relay
 ├── skills/                      # 92 skills (installed to ~/.claude/skills/)
 ├── docs/
 │   ├── PRE-WORKSHOP-CHECKLIST.md   # What to do before arriving
@@ -251,7 +253,7 @@ Your assistant is now yours. A few things to explore next:
 
 - **Create all accounts** — see [docs/ACCOUNTS-AND-LOGINS.md](docs/ACCOUNTS-AND-LOGINS.md)
 - **Add Google Workspace (Gmail + Calendar + Drive)** — ask your assistant: "Help me connect Google Workspace"
-- **Add Telegram** (get phone notifications when tasks finish) — see [docs/COMPLETION-GUIDE.md](docs/COMPLETION-GUIDE.md)
+- **Add Telegram and/or WhatsApp** (get phone notifications when tasks finish) — see [docs/COMPLETION-GUIDE.md](docs/COMPLETION-GUIDE.md)
 - **Upgrade your skills** — Selr AI offers advanced skill packs for deeper automation
 
 Full guide: [docs/COMPLETION-GUIDE.md](docs/COMPLETION-GUIDE.md)
