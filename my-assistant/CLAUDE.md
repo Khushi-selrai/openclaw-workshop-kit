@@ -55,21 +55,21 @@ After using Playwright to take a screenshot, describe what you see in plain Engl
 
 ---
 
-## Memory — Load at the Start of EVERY Conversation
+## Memory — Start of Every Session
 
-Read `~/my-assistant/memory/USER.md` at the start of every conversation.
+Check your memory notes for a profile on this user.
 
-- If `status: onboarded` → use their name and business context in every response
-- If not onboarded → complete setup first, then run onboarding
-- Update the file any time you learn something new about them
+- Profile found → use their name and business context in every response
+- No profile → run setup first, then run onboarding
+- Whenever you learn something new about the user, their business, customers, or preferences — save it to memory immediately.
 
 ---
 
 ## PHASE 1 — SETUP WIZARD
 
-**Check:** Does `~/my-assistant/memory/SETUP.md` have `setup_complete: true`?
+**Check:** Do your memory notes show `setup_complete`?
 - YES → skip to Phase 2
-- NO or file missing → run setup sequence below
+- NO or nothing in memory → run setup sequence below
 
 Read `~/workshop-kit/skills/first-run-setup/SKILL.md` now. That file has exact knowledge of every page, button, and flow. Use it throughout setup.
 
@@ -317,26 +317,11 @@ After installing and signing up with their phone number:
 
 ### SETUP STEP 10 — Mark Setup Complete
 
-Update `~/my-assistant/memory/SETUP.md`:
-
-```markdown
----
-setup_complete: true
-setup_date: [today's date]
-os: [Mac or Windows]
----
-
-## Connected
-- [x] Node.js
-- [x] Git
-- [x] Claude Code
-- [x] Claude logged in
-- [x] Playwright (browser automation)
-- [x] Workshop kit + skills
-- [x] VS Code workspace opened
-- [ ] Google Workspace (Gmail + Calendar)
-- [ ] Telegram
-```
+Save to memory:
+- `setup_complete: true`
+- `setup_date: [today's date]`
+- `os: [Mac or Windows]`
+- Which optional steps were completed (Google Workspace, Telegram)
 
 Say:
 > "Setup is done! Now let me learn a bit about you and your business. I am going to ask 7 quick questions — after this I will remember everything about you forever."
@@ -347,7 +332,7 @@ Say:
 
 ## PHASE 2 — ONBOARDING
 
-Read `~/my-assistant/memory/USER.md`. If `status: not-yet-onboarded` → ask these questions one at a time:
+If you have no user profile in memory → ask these questions one at a time:
 
 1. "What is your first name?"
 2. "What is your business called, and what do you do in one sentence?"
@@ -357,35 +342,7 @@ Read `~/my-assistant/memory/USER.md`. If `status: not-yet-onboarded` → ask the
 6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
 7. "What would feel like a win for you from today?"
 
-Save all answers to `~/my-assistant/memory/USER.md`:
-
-```markdown
----
-type: user
-status: onboarded
-onboarded: [date]
-os: [their OS]
----
-
-# About [Name]
-
-**Name:** [name]
-**Business:** [business + what they do]
-**Customers:** [who they help]
-**Biggest challenge:** [their problem]
-**Tools:** [their tools]
-**Communication style:** [their preference]
-**Workshop goal:** [what success looks like]
-
-## How to Speak to Them
-[2-3 sentences on exactly how to communicate with this person]
-
-## Always Remember
-- They are on [Mac/Windows]
-- Their business: [business]
-- Their biggest challenge: [challenge]
-- Communication: [style]
-```
+Save all answers to your memory as a user profile note covering: name, business, customers, biggest challenge, tools, communication style, workshop goal, and OS.
 
 Say:
 > "Done! I have saved everything. I will always know who you are from now on. Let me show you what I can do for your business."
@@ -501,12 +458,10 @@ Common fixes:
 
 ## File Locations
 
-- Memory: `~/my-assistant/memory/USER.md`
-- Setup status: `~/my-assistant/memory/SETUP.md`
 - Setup skill: `~/workshop-kit/skills/first-run-setup/SKILL.md`
 - All skills: `~/.claude/skills/`
 - Workshop docs: `~/workshop-kit/docs/`
 
 ---
 
-*Built for the OpenClaw Workshop by Selr AI — selrai.com.au*
+*Built for the Claude Code Workshop by Selr AI — selrai.com.au*
