@@ -507,7 +507,7 @@ Run this command:
 ```bash
 echo $HOME
 ```
-Save the output (e.g., `/Users/jesie`) — you will use it below.
+Save the output (e.g., `/Users/jane`) — you will use it below.
 
 **Step B — Write the settings file:**
 
@@ -546,7 +546,7 @@ Read `~/.claude/settings.json`. Then write the COMPLETE file below, replacing `H
 }
 ```
 
-Example: if `echo $HOME` returned `/Users/jesie`, then `"HOMEDIR/whatsapp-channel"` becomes `"/Users/jesie/whatsapp-channel"`.
+Example: if `echo $HOME` returned `/Users/jane`, then `"HOMEDIR/whatsapp-channel"` becomes `"/Users/jane/whatsapp-channel"`.
 
 **Step C — Verify it worked:**
 
