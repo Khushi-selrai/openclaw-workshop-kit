@@ -20,7 +20,7 @@
 │  │                                                                       │    │
 │  │   Reads:  CLAUDE.md — your instructions                              │    │
 │  │   Knows:  memory/USER.md — your business permanently                 │    │
-│  │   Uses:   94 skills — specialist capabilities on demand              │    │
+│  │   Uses:   86 skills — specialist capabilities on demand              │    │
 │  │   Via:    CLI tools · MCP connections · Browser automation           │    │
 │  └───────┬──────────────┬───────────────────┬────────────────┬─────────┘    │
 │          │              │                   │                │               │
@@ -98,8 +98,8 @@ Any service   → If it has an API, Claude can connect to it
 ## What "Connecting" a Tool Means
 
 ```
-1. Run the install command    →    claude mcp add google-workspace -e GOOGLE_CLIENT_ID=id -e GOOGLE_CLIENT_SECRET=secret -- npx -y @taylorwilsdon/google_workspace_mcp --scope user
-2. Browser window opens       →    You click "Allow" on the Google login screen
+1. Install the tool           →    npm install -g @googleworkspace/cli
+2. Sign in                    →    gws auth login (browser opens, click "Allow")
 3. Connection saved           →    Claude can now use Gmail, Calendar, Drive, and more
 4. Permanent                  →    Works every session — no re-logging in
 ```

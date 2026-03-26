@@ -10,30 +10,11 @@ When you ask your assistant to do something, it automatically picks the right sk
 
 You can also trigger a skill directly by mentioning the skill name:
 > "Use your deep-research skill to..."
-> "Apply the humanizer to this..."
+> "Apply the avoid-ai-writing skill to this..."
 
 ---
 
 ## Content & Writing Skills
-
----
-
-### humanizer
-**What it does:** Takes any AI-written text and rewrites it to sound like a real human wrote it. Removes the 21 most common "AI writing patterns" that make content sound robotic.
-
-**When to use:** After writing ANY content — emails, social posts, website copy, blog posts.
-
-**Signs you need it:** Words like "delve", "leverage", "it's important to note", "in conclusion", "I'd be happy to", "game-changer", "transformative"
-
-**Example prompts:**
-> "Humanize this email: [paste text]"
-> "Make this blog post sound less like AI wrote it"
-> "Remove all the AI-isms from this LinkedIn post"
-
-**Tips:**
-- Always run humanizer AFTER you create content, not before
-- It has a 43-word replacement table for the most common AI phrases
-- Also removes excessive exclamation marks and hollow phrases
 
 ---
 
@@ -55,7 +36,7 @@ You can also trigger a skill directly by mentioning the skill name:
 ---
 
 ### avoid-ai-writing
-**What it does:** Audits any piece of content and identifies AI writing patterns, then rewrites them with specific plain-English alternatives. More detailed than humanizer.
+**What it does:** Audits any piece of content and identifies AI writing patterns, then rewrites them with specific plain-English alternatives.
 
 **When to use:** When you want a deep audit of content with specific explanations of what's wrong.
 
@@ -79,18 +60,6 @@ You can also trigger a skill directly by mentioning the skill name:
 - Give your business niche and audience for much better content
 - Ask for different content types: educational, story, promotional, engagement question
 - Specify platform — LinkedIn tone is very different to Facebook
-
----
-
-### content-creator
-**What it does:** Creates long-form SEO-optimised content — blog posts, guides, articles, case studies.
-
-**When to use:** When you need content that ranks in Google or positions you as an expert.
-
-**Example prompts:**
-> "Write a 1200-word blog post: '5 Ways [Business Type] Can Use AI to Save 10 Hours Per Week'"
-> "Create a case study for this client result: [describe the result]"
-> "Write a lead magnet guide: 'The Ultimate Guide to [Topic] for [Audience]'"
 
 ---
 

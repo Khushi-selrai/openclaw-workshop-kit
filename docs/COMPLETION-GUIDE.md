@@ -2,6 +2,8 @@
 
 If you didn't get through everything today, this guide walks you through completing your setup at home. Take your time. There's no rush.
 
+> For the full end-to-end setup guide, see [FULL-SETUP-PAGE.md](FULL-SETUP-PAGE.md)
+
 ---
 
 ## What You Should Have Done Today
@@ -40,11 +42,17 @@ Your skills were installed during the workshop setup. They live at `~/.claude/sk
 
 These are the most valuable next connections. Do them in this order:
 
-#### 1. Google Workspace (Gmail + Calendar + Drive + Docs + Sheets)
-Your assistant can help you set this up — just ask in the Claude chat:
-> "Help me connect Google Workspace so you can access my Gmail and Calendar."
+#### 1. Google Workspace (Gmail + Calendar + Drive + Docs + Sheets + More)
 
-Once connected, your assistant can read and send emails, check your calendar, access Drive, and more.
+Install the Google Workspace tool and sign in:
+```bash
+npm install -g @googleworkspace/cli
+gws auth login
+```
+
+A browser window opens — pick your Google account and click Allow. Once connected, your assistant can read and send emails, check your calendar, access Drive, Docs, Sheets, and more.
+
+> For the full guide with troubleshooting, see [GOOGLE-WORKSPACE-SETUP.md](GOOGLE-WORKSPACE-SETUP.md)
 
 #### 2. Notion (knowledge base)
 Your assistant can help you set this up — just ask in the Claude chat:
@@ -60,16 +68,20 @@ Your assistant can help you set this up — just ask in the Claude chat:
 
 ### Set Up Phone Notifications (Telegram and/or WhatsApp)
 
-This lets your AI assistant send you messages on your phone. Very useful when it finishes a task. You can set up one or both — they work independently.
+This lets you chat with your assistant from your phone — ask questions, request tasks, and get replies wherever you are. You can set up one or both.
 
 #### Telegram
 
-**Step 1:** Download Telegram on your phone (free)
-**Step 2:** Search for `@BotFather` in Telegram
-**Step 3:** Send `/newbot` and follow the instructions
-**Step 4:** Copy your bot token
-**Step 5:** Tell your assistant: "I want to set up Telegram notifications. My bot token is: [your token]"
-**Step 6:** Your assistant handles the rest
+**Step 1:** Download Telegram on your phone (free) and sign up
+**Step 2:** Search for `@BotFather` in Telegram, send `/newbot`, and follow the prompts to create a bot
+**Step 3:** Copy the bot token BotFather gives you
+**Step 4:** In Claude Code, type: `/plugin install telegram@claude-plugins-official`
+**Step 5:** Save your token: `/telegram:configure [your token]`
+**Step 6:** Install Bun (required): `curl -fsSL https://bun.sh/install | bash`
+**Step 7:** Restart Claude Code with: `claude --channels plugin:telegram@claude-plugins-official`
+**Step 8:** Message your bot on Telegram, get a pairing code, then type: `/telegram:access pair [code]`
+
+> For the full guide with troubleshooting, see [TELEGRAM-SETUP.md](TELEGRAM-SETUP.md)
 
 #### WhatsApp
 

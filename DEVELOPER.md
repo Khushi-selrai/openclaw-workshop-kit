@@ -29,7 +29,7 @@ openclaw-workshop-kit/
 │       ├── SETUP.md                 # Setup status tracker
 │       └── MEMORY.md               # Persistent memory across conversations
 │
-├── skills/                          # 94 bundled business skills
+├── skills/                          # 86 bundled business skills
 │   ├── [25 CORE skills]             # Surfaced to all attendees via skills-discovery
 │   ├── [~61 ADVANCED skills]        # Available on request
 │   └── [8 DEVELOPER-ONLY skills]    # For web app / technical integration use cases
@@ -101,13 +101,14 @@ Windows users need Git for Windows installed before running the bootstrap prompt
 - Verify the bootstrap prompt works in Git Bash / PowerShell terminal inside VS Code
 - `docs/WINDOWS-SETUP.md` should reflect the new bootstrap flow
 
-### RESOLVED — Google Workspace MCP
+### RESOLVED — Google Workspace
 
-Gmail and Google Calendar are now handled by a single MCP:
+Gmail, Calendar, Drive, Docs, Sheets, and more are now handled by the Google Workspace CLI:
 ```bash
-claude mcp add google-workspace -e GOOGLE_CLIENT_ID=your_id -e GOOGLE_CLIENT_SECRET=your_secret -- npx -y @taylorwilsdon/google_workspace_mcp --scope user
+npm install -g @googleworkspace/cli
+gws auth login
 ```
-Requires Google Cloud project with OAuth credentials (see SETUP STEP 8 in CLAUDE.md). Covers Gmail + Calendar + Drive + Docs + Sheets.
+See `docs/GOOGLE-WORKSPACE-SETUP.md` for the full guide. Covers Gmail + Calendar + Drive + Docs + Sheets + Slides + Chat + Tasks + Contacts.
 
 ### MEDIUM — Playwright smoke test
 

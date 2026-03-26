@@ -4,6 +4,7 @@ This prompt is used by workshop attendees to set up their AI Business Assistant.
 
 **Primary source:** The workshop Notion page (selrai.notion.site) — attendees copy from there.
 **This file:** Version-controlled backup. Update here whenever the Notion page is updated.
+**Also appears in:** `docs/FULL-SETUP-PAGE.md` Step 5 — keep both in sync.
 
 ---
 
@@ -29,7 +30,7 @@ Use the correct commands for my operating system (detect whether I am on Mac or 
 3. Copy this file from the downloaded workshop-kit into my-assistant:
    - workshop-kit/my-assistant/CLAUDE.md → my-assistant/CLAUDE.md
 
-4. Install all 94 skills: copy every folder from workshop-kit/skills/
+4. Install all 86 skills: copy every folder from workshop-kit/skills/
    into ~/.claude/skills/ (create the skills directory if it does not exist).
    Do not copy SKILLS-LIST.md — only the folders.
 
