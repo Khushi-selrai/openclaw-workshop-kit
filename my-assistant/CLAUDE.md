@@ -489,88 +489,63 @@ If session expired:
 - WhatsApp Web sessions can expire if your phone is offline too long
 - Delete the auth folder and scan a new QR code
 
-**WHATSAPP STEP 8 — Skip Permission Prompts (Recommended)**
+**WHATSAPP STEP 8 — Allow WhatsApp to Listen and Reply Automatically**
 
 Say:
 
-> "One more thing — right now, every time I try to check your Gmail, search Notion, or do anything with your tools, a popup appears asking 'Do you want to proceed?' and you have to click 'Yes' every single time. That gets annoying fast."
+> "Almost done! There is one important thing we need to set up for WhatsApp to work properly."
 
-> "I can set it up so I just go ahead and do what you ask without stopping to check with you each time. Think of it like giving your assistant a key to the office instead of buzzing them in every morning."
+> "Right now, when someone sends you a WhatsApp message, Claude needs your permission before it can read it or reply. That means every time a message comes in, a popup will appear asking 'Do you want to proceed?' — and if you are not sitting at your computer, the message just gets ignored."
 
-> "Would you like me to turn that on?"
+> "That is like hiring a receptionist but making them ask you before they can answer the phone. It defeats the purpose."
 
-If they say yes, follow these steps EXACTLY:
+> "To fix this, I need to allow WhatsApp to listen for messages and reply on its own — without the popup. But first, let me make sure we have the right security in place."
 
-**Step A — Get the home directory path:**
+**Step A — Confirm allowed phone numbers:**
 
-Run this command:
-```bash
-echo $HOME
-```
-Save the output (e.g., `/Users/jane`) — you will use it below.
+> "In the earlier step, we set which phone numbers are allowed to message Claude through WhatsApp. Let me check what we have."
 
-**Step B — Write the settings file:**
+Read the `.mcp.json` file in the whatsapp-channel folder and check the `WA_ALLOW_FROM` value.
 
-⚠️ CRITICAL: Do NOT just "check" the file and say it is already done. You MUST read the file, verify it contains ALL of the required fields below, and WRITE/OVERWRITE it if ANY field is missing.
+If `WA_ALLOW_FROM` is empty:
 
-Read `~/.claude/settings.json`. Then write the COMPLETE file below, replacing `HOMEDIR` with the actual home directory from Step A:
+> "Right now, ANYONE who messages your WhatsApp number can talk to Claude. Before I let WhatsApp run on its own, I want to make sure only the right people can reach it."
 
-```json
-{
-  "permissions": {
-    "defaultMode": "dontAsk",
-    "allow": [
-      "Bash(*)",
-      "Read(*)",
-      "Write(*)",
-      "Edit(*)",
-      "Glob(*)",
-      "Grep(*)",
-      "WebFetch(*)",
-      "Skill(*)",
-      "Agent(*)",
-      "mcp__claude_ai_Gmail__*",
-      "mcp__claude_ai_Notion__*",
-      "mcp__claude_ai_Airtable__*",
-      "mcp__claude_ai_n8n__*",
-      "mcp__n8n-mcp__*",
-      "mcp__playwright__*"
-    ],
-    "additionalDirectories": [
-      "HOMEDIR/whatsapp-channel",
-      "HOMEDIR/workshop-kit",
-      "HOMEDIR/.claude/skills",
-      "HOMEDIR/my-assistant"
-    ]
-  }
-}
-```
+> "Which phone numbers should be allowed to message Claude? Give me the numbers with the country code — for example, +61412345678 for Australia or +1234567890 for the United States."
 
-Example: if `echo $HOME` returned `/Users/jane`, then `"HOMEDIR/whatsapp-channel"` becomes `"/Users/jane/whatsapp-channel"`.
+Update `WA_ALLOW_FROM` in `.mcp.json` with the numbers they give you.
 
-**Step C — Verify it worked:**
+If `WA_ALLOW_FROM` already has numbers:
 
-Read `~/.claude/settings.json` again and confirm:
-- ✅ `"defaultMode": "dontAsk"` is present
-- ✅ `"Bash(*)"` is in the allow list
-- ✅ `"mcp__claude_ai_Gmail__*"` is in the allow list
-- ✅ All `HOMEDIR` placeholders have been replaced with the real path
+> "Good — only these numbers can message Claude through WhatsApp: [list the numbers]. If that looks right, I will go ahead and set up the permissions."
 
-If any of these are missing, fix the file and check again.
+Ask them to confirm.
 
-**Step D — Tell the user:**
+**Step B — Set WhatsApp to run without permission prompts:**
 
-> "Done! I have turned off permission prompts for everything — Gmail, Notion, Airtable, WhatsApp, all of it. From now on, when you ask me to do something, I will just do it."
+Once the user has confirmed their allowed numbers, update `~/.claude/settings.json`:
 
-> "If you ever want to turn it back on, just tell me 'start asking me for permission again' and I will."
+1. Run `echo $HOME` to get the home directory path.
+2. Read `~/.claude/settings.json`.
+3. Add `"mcp__whatsapp__*"` to the `permissions.allow` array. If the allow array does not exist, create it.
+4. Do NOT remove any existing allow rules — only ADD to them.
 
-⚠️ The user MUST restart Claude Code (close and reopen) for this to take effect. Tell them:
+The `mcp__whatsapp__*` rule means: "Let WhatsApp read messages and send replies without asking me every time."
 
-> "One last thing — you need to close Claude Code and reopen it for this to kick in. After that, no more popups."
+**Step C — Explain what you did:**
 
-If they say no:
+> "All set! Here is what I did:"
 
-> "No problem! I will keep checking with you before I do anything. If it ever gets annoying, just say 'stop asking me for permission' and I will set it up for you."
+> "1. Only the phone numbers you approved can message Claude through WhatsApp — nobody else."
+> "2. When one of those approved numbers sends a message, Claude will read it and reply automatically — no popup, no waiting for you to click 'Yes'."
+
+> "Think of it like this: you have given Claude a list of VIP contacts, and told the receptionist 'if one of these people calls, just put them through.'"
+
+> "You can change the allowed numbers anytime — just tell me 'update my WhatsApp allowed numbers' and I will fix it."
+
+⚠️ The user needs to restart Claude Code for this to take effect. Tell them:
+
+> "One last thing — close Claude Code and reopen it so this kicks in. After that, WhatsApp will work on its own."
 
 ---
 
