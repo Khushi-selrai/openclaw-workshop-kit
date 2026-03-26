@@ -1,4 +1,4 @@
-# Skills Reference — Your 94 Installed Skills
+# Skills Reference — Your 86 Installed Skills
 
 Each skill is a specialist capability your AI assistant can use. Just describe what you need — Claude picks the right skill automatically.
 
@@ -19,19 +19,17 @@ Each skill is a specialist capability your AI assistant can use. Just describe w
 | `agent-orchestration-multi-agent-optimize` | Coordinate and optimise multi-agent systems | "Optimise how my agents work together" | ADVANCED |
 | `agent-tool-builder` | Design tools for AI agents | "Build a tool my agent can use" | ADVANCED |
 | `agentfolio` | Discover and research autonomous AI agents | "What agents exist for sales automation?" | ADVANCED |
-| `ai-agents-architect` | Design and build autonomous AI agents | "Help me design an agent for lead gen" | ADVANCED |
 | `ai-engineer` | Production LLM apps, RAG systems, agents | "Build a RAG system for my knowledge base" | ADVANCED |
 | `autonomous-agent-patterns` | Design patterns for autonomous coding agents | "What patterns should I use for my agent?" | ADVANCED |
 | `bot-developer` | Discord, Telegram, Slack bots | "Build a Telegram bot for my business" | ADVANCED |
 | `claude-api` | Build apps with the Claude API | "Help me build a Claude-powered app" | ADVANCED |
-| `mcp-builder` | Build MCP servers for Claude | "Build an MCP server for my tool" | ADVANCED |
 | `mcp-creator` | Production-ready MCP server development | "Create a production MCP server" | ADVANCED |
 | `n8n-mcp-tools-expert` | Expert guide for using n8n MCP tools | "Help me use n8n MCP effectively" | ADVANCED |
 | `n8n-workflow-patterns` | Proven n8n workflow architectural patterns | "Help me build this n8n workflow" | ADVANCED |
 | `orchestrator` | Master coordinator — delegates to specialist skills | "Orchestrate a multi-step research project" | ADVANCED |
 | `prompt-engineer` | Improve AI instructions for better results | "Improve this prompt for better output" | CORE |
 | `skill-creator` | Create and improve Claude skills | "Create a new skill for my business" | ADVANCED |
-| `skills-discovery` | Shows all 25 core skills with personalised recommendations | "What can you do for my business?" | CORE |
+| `skills-discovery` | Shows all 22 core skills with personalised recommendations | "What can you do for my business?" | CORE |
 | `first-run-setup` | Step-by-step guided setup for first-time users | Used automatically during initial setup | ADVANCED |
 
 ## Content & Writing
@@ -40,15 +38,12 @@ Each skill is a specialist capability your AI assistant can use. Just describe w
 |---|---|---|---|
 | `ad-creative` | Ad headlines, copy, and creative briefs | "Write 5 Facebook ad variations" | CORE |
 | `avoid-ai-writing` | Strips robotic AI patterns from any text | "Remove the AI-isms from this post" | CORE |
-| `content-creator` | Long-form SEO articles and blog content | "Write a 1000-word blog post about [topic]" | CORE |
 | `content-marketer` | Omnichannel content marketing strategy | "Build me a content marketing plan" | CORE |
 | `copywriting` | Persuasive marketing copy for any platform | "Write my homepage headline" | CORE |
 | `direct-response-copy` | High-converting sales copy using proven frameworks | "Write a direct response sales page" | CORE |
 | `email-composer` | Professional emails for any context | "Write a follow-up email to a client" | CORE |
 | `email-sequence` | Automated email campaigns and sequences | "Build a 5-email welcome sequence" | CORE |
-| `humanizer` | Makes AI writing sound human and natural | "Humanize this email" | CORE |
 | `social-content` | Social posts for LinkedIn, Instagram, Facebook | "Write 7 LinkedIn posts for this week" | CORE |
-| `social-orchestrator` | Coordinate content across multiple platforms | "Plan my social media for next month" | ADVANCED |
 | `technical-writer` | Developer docs, API references, runbooks | "Document this process step by step" | ADVANCED |
 
 ## Design & UX
@@ -93,14 +88,12 @@ Each skill is a specialist capability your AI assistant can use. Just describe w
 | `performance-profiling` | Application performance and bottleneck identification | "Profile my app for performance issues" | ADVANCED |
 | `playwright-skill` | Browser automation with Playwright | "Automate this browser workflow" | ADVANCED |
 | `postgresql-optimization` | PostgreSQL performance tuning | "Optimise this database query" | DEV-ONLY |
-| `qa` | Systematic QA testing for web apps | "QA test my web application" | ADVANCED |
 | `security-auditor` | OWASP vulnerability scanning and compliance | "Audit my app for security issues" | ADVANCED |
 | `supabase-admin` | Supabase RLS, migrations, schema design | "Design my Supabase schema" | ADVANCED |
 | `systematic-debugging` | Root-cause analysis and step-by-step fixes | "Something broke — help me fix it" | ADVANCED |
 | `test-driven-development` | TDD — write tests before implementation | "Help me write tests for this feature" | ADVANCED |
 | `typescript-advanced-patterns` | Advanced TypeScript for production codebases | "Improve my TypeScript types" | DEV-ONLY |
 | `verification-before-completion` | Verify work before claiming done | "Verify this implementation is correct" | ADVANCED |
-| `webapp-testing` | Browser-based web application testing | "Test my web app with Playwright" | ADVANCED |
 
 ## Process
 
@@ -121,7 +114,6 @@ Each skill is a specialist capability your AI assistant can use. Just describe w
 | `competitive-cartographer` | Strategic competitive positioning and white space | "Where are the gaps in my market?" | ADVANCED |
 | `competitor-alternatives` | Maps your competitive landscape | "Analyse my main competitor's positioning" | CORE |
 | `deep-research` | Deep multi-step research on any topic | "Research my top 3 competitors" | CORE |
-| `last30days` | Trends and sentiment from the last 30 days | "What's trending in my industry right now?" | CORE |
 | `reddit-insights` | Mines Reddit for honest customer opinions | "What do customers complain about in my industry?" | CORE |
 | `research-analyst` | Competitive and market analysis with structured reports | "Give me a competitor analysis report" | CORE |
 | `youtube-summarizer` | Transcripts and summaries from any YouTube video | "Summarise this YouTube video: [URL]" | ADVANCED |
@@ -150,11 +142,11 @@ Each skill is a specialist capability your AI assistant can use. Just describe w
 
 ---
 
-**Total: 94 skills installed**
-- CORE: 25 skills (shown by default via skills-discovery)
-- ADVANCED: 61 skills (available on request)
+**Total: 86 skills installed**
+- CORE: 22 skills (shown by default via skills-discovery)
+- ADVANCED: 56 skills (available on request)
 - DEV-ONLY: 8 skills (for technical integrations — never surfaced in demos)
 
 > Ask your assistant to do anything — it will automatically use the right skill for the job.
 
-*OpenClaw Workshop — selrai.com.au*
+*Built by Selr AI — selrai.com.au*

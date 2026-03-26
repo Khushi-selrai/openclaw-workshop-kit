@@ -133,7 +133,7 @@ Run:
 ls ~/workshop-kit/skills/ | wc -l
 ```
 
-- Shows 95 → "All 94 skills are installed. We are good to go." → skip to Step 4
+- Shows 87 → "All 86 skills are installed. We are good to go." → skip to Step 4
 - Shows anything else or error → say: "It looks like the workshop kit did not install correctly. Can you paste the setup prompt again from the Notion page and I will redo it?"
 
 ---
@@ -236,67 +236,118 @@ claude mcp add playwright @playwright/mcp --scope user
 
 ---
 
-### TOOL STEP 3 — Connect Google Workspace (Gmail + Calendar) — Optional
+### TOOL STEP 3 — Connect Google Workspace (Gmail + Calendar + Drive + More) — Optional
 
 Ask: "Would you like to connect your Gmail and Google Calendar so I can help with emails and scheduling?"
 
-If yes — one-time setup (~15 minutes):
+If yes — quick setup (~5 minutes):
 
-**PART A — Google Cloud Setup**
+**Say:**
+> "I am going to install a tool that connects me to your Google account. Once it is set up, I can read and send your emails, check your calendar, and access your Google Drive."
 
-Say: "I need to walk you through setting up a Google Cloud account. This is the system Google uses to let other apps access your Gmail. I will guide you through each click."
+**Step 1 — Install the Google Workspace tool:**
 
-Option 1 — Use Claude Code to do most of this automatically (Mac/Linux only):
-> "Type this message to me: 'Help me set up Google Cloud OAuth credentials using gcloud CLI for the Google Workspace MCP'"
-I will walk through the gcloud CLI steps with them.
-
-Option 2 — Manual (web browser, works on all OS):
-1. Go to console.cloud.google.com — sign in with your Google account
-2. Click "Select a project" at the top → "New Project" → name it "my-assistant" → click Create
-3. In the search bar, type "Gmail API" → click it → click Enable
-4. Search "Google Calendar API" → click it → click Enable
-5. In the left menu, click "OAuth consent screen" → choose External → fill in App name (anything) and your email → click Save and Continue through all screens
-6. Still in OAuth consent screen, click "Test users" → click "+ Add Users" → enter YOUR Google email → click Add, then Save
-   ⚠️ This step is required — skipping it causes silent authentication failure
-7. In the left menu, click "Credentials" → "Create Credentials" → "OAuth client ID"
-8. Under Application type, choose "Desktop app" → name it anything → click Create
-9. Copy the Client ID and Client Secret shown on screen — you need these next
-
-**PART B — Connect the MCP**
-
-Run:
 ```bash
-claude mcp add google-workspace -e GOOGLE_CLIENT_ID=your_client_id -e GOOGLE_CLIENT_SECRET=your_client_secret -- npx -y @taylorwilsdon/google_workspace_mcp --scope user
+npm install -g @googleworkspace/cli
 ```
-(Replace your_client_id and your_client_secret with what you copied above)
 
-A browser window will open. Sign in with your Google account and click Allow.
+Verify: `gws --version` — should show a version number.
 
-When connected:
-> "Google Workspace is connected. I can now read and send your emails, check your calendar, and access your Google Drive."
+**Step 2 — Sign in to Google:**
 
-What this unlocks: Gmail + Google Calendar + Google Drive + Google Docs + Sheets
+```bash
+gws auth login
+```
+
+A browser window will open. Say:
+> "A sign-in page just opened in your browser. Pick the Google account you want me to use — make sure it is the right one. Then click Allow."
+
+If `gws auth login` says a project needs to be created first, run:
+```bash
+gws auth setup
+```
+This creates the necessary Google Cloud project automatically. Then run `gws auth login` again.
+
+**Step 3 — Verify it works:**
+
+```bash
+gws calendar +agenda
+```
+
+If it shows calendar events (or "no events"):
+> "Google Workspace is connected. I can now read and send your emails, check your calendar, and access your Google Drive, Docs, Sheets, and more."
+
+What this unlocks: Gmail + Google Calendar + Google Drive + Google Docs + Sheets + Slides + Chat + Tasks + Contacts
 
 ---
 
 ### TOOL STEP 4 — Telegram Phone Notifications (Optional)
 
-Ask: "Would you like me to send you messages on your phone when I finish tasks?"
+Ask: "Would you like to message me from your phone? I can connect to Telegram so you can chat with me wherever you are."
 
-If yes, use Playwright to navigate to `https://telegram.org/`, take screenshot.
+If yes:
 
-Guide them:
-- **Mac:** "Click 'Telegram for macOS' — the one with the Mac logo"
-- **Windows:** "Under the heading that says PC/Linux, click 'Telegram for PC / Linux'"
+**Step 1 — Install Telegram**
 
-After installing and signing up with their phone number:
-1. Open Telegram
-2. Click the search/magnifying glass icon
-3. Type `@BotFather` — select the result with a blue verified checkmark
-4. Click Start, then type `/newbot`
-5. Follow prompts — name the bot anything, username must end in `bot`
-6. Copy the token BotFather gives them (looks like: `1234567890:AAFxxxxx`)
-7. Paste it here — I will save it
+Say: "First, download Telegram on your phone."
+- **iPhone:** "Open the App Store, search for Telegram, and tap Get"
+- **Android:** "Open Google Play, search for Telegram, and tap Install"
+
+After installing, sign up with their phone number.
+
+**Step 2 — Create a Bot**
+
+Guide them through BotFather:
+1. Open Telegram and search for **@BotFather** (look for the blue checkmark)
+2. Tap **Start**, then type `/newbot`
+3. BotFather asks for a name — type anything (e.g. "My Assistant")
+4. BotFather asks for a username — must end in `bot` (e.g. `my_assistant_bot`)
+5. BotFather replies with a **token** — copy the entire thing (numbers, colon, and all)
+
+**Step 3 — Install the Telegram Plugin**
+
+In the Claude Code chat, type:
+```
+/plugin install telegram@claude-plugins-official
+```
+
+Then save the bot token:
+```
+/telegram:configure [their token]
+```
+
+**Step 4 — Install Bun (Required)**
+
+Check: `bun --version`
+
+If not installed:
+- **Mac/Linux:** `curl -fsSL https://bun.sh/install | bash`
+- **Windows:** `powershell -c "irm bun.sh/install.ps1 | iex"`
+
+Say: "Close and reopen your terminal after installing."
+
+**Step 5 — Connect and Pair**
+
+Say: "I need to restart with Telegram enabled. Close Claude Code and start it again with this command:"
+
+```sh
+claude --channels plugin:telegram@claude-plugins-official
+```
+
+Then guide them:
+1. Open Telegram on your phone
+2. Find your bot and tap **Start**
+3. Send any message — the bot will reply with a **6-character code**
+4. Back in Claude Code, type: `/telegram:access pair <code>`
+
+**Step 6 — Lock Down Access**
+
+Once paired, lock it down:
+```
+/telegram:access policy allowlist
+```
+
+Say: "Your Telegram is connected. You can now message me from your phone anytime."
 
 ---
 
@@ -325,8 +376,8 @@ Present each skill in plain English — one sentence, what it does for their spe
 | Challenge | Skills to Recommend |
 |---|---|
 | Getting more clients / leads | Sales Automator, Copywriting, Email Sequence |
-| Writing content / visibility | Social Content, Content Creator, Humanizer |
-| Writing takes too long | Humanizer, Avoid AI Writing, Copywriting |
+| Writing content / visibility | Social Content, Content Marketer, Avoid AI Writing |
+| Writing takes too long | Avoid AI Writing, Copywriting, Direct Response Copy |
 | Understanding the market | Deep Research, Reddit Insights, Research Analyst |
 | Too busy / overwhelmed | Brainstorming, Writing Plans, Sales Automator |
 | Beating competitors | Competitor Alternatives, Research Analyst, Deep Research |
@@ -344,7 +395,7 @@ Read: `~/.claude/skills/deep-research/SKILL.md` + `~/.claude/skills/competitor-a
 
 **Sales/leads challenge:**
 > "Let me write you a personalised outreach email right now for your exact type of customer."
-Read: `~/.claude/skills/sales-automator/SKILL.md` + `~/.claude/skills/copywriting/SKILL.md` + `~/.claude/skills/humanizer/SKILL.md`
+Read: `~/.claude/skills/sales-automator/SKILL.md` + `~/.claude/skills/copywriting/SKILL.md` + `~/.claude/skills/avoid-ai-writing/SKILL.md`
 
 **Too busy/overwhelmed:**
 > "Let me map out which tasks in your business I could take off your plate this week."
@@ -352,12 +403,12 @@ Read: `~/.claude/skills/brainstorming/SKILL.md` + `~/.claude/skills/writing-plan
 
 ---
 
-## Your Core Skills (25)
+## Your Core Skills (22)
 
 Located at `~/.claude/skills/`. Read the skill file before performing that task.
-Full plain-English guide with all 94 skills: `~/workshop-kit/SKILLS-GUIDE.md`
+Full plain-English guide with all 86 skills: `~/workshop-kit/SKILLS-GUIDE.md`
 
-Advanced skills (61 more) and developer skills (8) are also installed — see SKILLS-GUIDE.md for the full list.
+Advanced skills (56 more) and developer skills (8) are also installed — see SKILLS-GUIDE.md for the full list.
 
 | Skill | What It Does | Needs Extra Setup? |
 |---|---|---|
@@ -365,16 +416,13 @@ Advanced skills (61 more) and developer skills (8) are also installed — see SK
 | `avoid-ai-writing` | Removes robotic AI patterns | No |
 | `brainstorming` | Structured idea generation | No |
 | `competitor-alternatives` | Competitor analysis | No |
-| `content-creator` | Long-form SEO content | No |
-| `content-marketer` | Omnichannel content strategy | No |
+| `content-marketer` | Content strategy + SEO + distribution | No |
 | `copywriting` | Persuasive marketing content | No |
 | `deep-research` | Deep research on any topic | Yes — free Gemini API key |
 | `direct-response-copy` | High-converting sales copy | No |
 | `email-composer` | Professional emails | No |
-| `email-sequence` | Email campaigns and sequences | No (Google Workspace MCP to send) |
-| `humanizer` | Makes AI writing sound human | No |
+| `email-sequence` | Email campaigns and sequences | No (Google Workspace to send) |
 | `indie-monetization-strategist` | Pricing and monetisation models | No |
-| `last30days` | Trends from the last 30 days | No |
 | `paid-ads` | Google, Meta, LinkedIn ad strategy | No |
 | `personal-finance-coach` | Tax, investment, cash flow | No |
 | `product-appeal-analyzer` | Product positioning and desirability | No |
@@ -394,13 +442,14 @@ Advanced skills (61 more) and developer skills (8) are also installed — see SK
 Never panic. Always say:
 > "No problem at all — let me try a different way."
 
-Read `systematic-debugging.md` for any technical issue.
+Read the `systematic-debugging` skill for any technical issue.
 
 Common fixes:
 - Command not found → check Node.js installed, terminal restarted
-- Permission denied → add `sudo` (Mac) or run as Administrator (Windows)
+- Permission denied → try `npm config set prefix ~/.npm-global` then update PATH, or ask your assistant for help
 - Claude login not working → `claude logout` then `claude login`
 - Playwright not working → `npm install -g @playwright/mcp` then re-add
+- Google wrong account → `gws auth logout` then `gws auth login`
 
 ---
 
@@ -421,6 +470,9 @@ Common fixes:
 - Setup skill: `~/workshop-kit/skills/first-run-setup/SKILL.md`
 - All skills: `~/.claude/skills/`
 - Workshop docs: `~/workshop-kit/docs/`
+- Full setup guide: `~/workshop-kit/docs/FULL-SETUP-PAGE.md`
+- Telegram setup: `~/workshop-kit/docs/TELEGRAM-SETUP.md`
+- Google Workspace setup: `~/workshop-kit/docs/GOOGLE-WORKSPACE-SETUP.md`
 
 ---
 

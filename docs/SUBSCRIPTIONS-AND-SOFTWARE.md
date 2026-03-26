@@ -37,9 +37,8 @@ These connect to Claude Code with one command. No extra cost.
 
 | Tool | Cost | What Your Assistant Can Do | Connect With |
 |---|---|---|---|
-| **Gmail** | Free (Google account) | Read emails, draft replies, search inbox | `claude mcp add gmail npx @gptscript-ai/gmail-mcp` |
-| **Google Calendar** | Free (Google account) | See your schedule, find free time, plan meetings | `claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp` |
-| **Telegram Bot** | Free | Send you phone notifications when tasks finish | Setup in your assistant — see `docs/COMPLETION-GUIDE.md` |
+| **Google Workspace** | Free (Google account) | Gmail, Calendar, Drive, Docs, Sheets, and more | `npm install -g @googleworkspace/cli` then `gws auth login` |
+| **Telegram Bot** | Free | Message your assistant from your phone | See `docs/TELEGRAM-SETUP.md` |
 | **Notion** | Free / $10 USD/mo | Read and update your notes and workspace | [notion.so](https://www.notion.so) + `claude mcp add notion npx @anthropic-ai/notion-mcp` |
 
 ---
@@ -97,7 +96,7 @@ Right now your assistant only runs when your laptop is open. A server lets it ru
 
 - An AI assistant available 24/7 — never sick, never on leave, never distracted
 - Writes, researches, and automates across your whole business
-- 92 specialist skills built in from day one
+- 86 specialist skills built in from day one
 - Gets smarter every time you use it
 - Replaces 10–20 hours of admin and content work per month
 

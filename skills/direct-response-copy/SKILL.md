@@ -1,3 +1,8 @@
+---
+name: direct-response-copy
+description: High-converting sales copy using classic direct response frameworks (Schwartz, Hopkins, Ogilvy, Halbert). Landing pages, sales emails, headlines, CTAs, and persuasive content.
+---
+
 # The Direct Response Copy Skill
 
 **Write copy that converts. Landing pages, emails, sales copy, headlines, CTAs, social posts — anything persuasive.**
