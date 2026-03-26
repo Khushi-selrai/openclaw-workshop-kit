@@ -489,63 +489,51 @@ If session expired:
 - WhatsApp Web sessions can expire if your phone is offline too long
 - Delete the auth folder and scan a new QR code
 
-**WHATSAPP STEP 8 — Allow WhatsApp to Listen and Reply Automatically**
+**WHATSAPP STEP 8 — Allow WhatsApp to Run Without Permission Popups**
+
+First, check the `.mcp.json` file in the whatsapp-channel folder and read the `WA_ALLOW_FROM` value.
+
+If `WA_ALLOW_FROM` is empty or not set, go back to WHATSAPP STEP 5 and set it up first. Do NOT proceed until at least one phone number is in the allowed list. Say:
+
+> "Before we continue, we need to set up which phone numbers can message Claude. Let me take you through that first."
+
+Once `WA_ALLOW_FROM` has at least one number, continue:
 
 Say:
 
-> "Almost done! There is one important thing we need to set up for WhatsApp to work properly."
+> "Your WhatsApp is set up so only these numbers can message Claude: [list the numbers from WA_ALLOW_FROM]."
 
-> "Right now, when someone sends you a WhatsApp message, Claude needs your permission before it can read it or reply. That means every time a message comes in, a popup will appear asking 'Do you want to proceed?' — and if you are not sitting at your computer, the message just gets ignored."
+> "Now, here is the thing — every time one of those people sends you a WhatsApp message, a popup appears on your screen asking 'Do you want to let Claude read this message?' and you have to click 'Yes'. And then ANOTHER popup asks 'Do you want to let Claude reply?' and you have to click 'Yes' again."
 
-> "That is like hiring a receptionist but making them ask you before they can answer the phone. It defeats the purpose."
+> "If you are away from your computer, those messages just sit there unanswered."
 
-> "To fix this, I need to allow WhatsApp to listen for messages and reply on its own — without the popup. But first, let me make sure we have the right security in place."
+> "I can turn that off so Claude reads and replies to WhatsApp messages automatically — no popups, no clicking. Only the phone numbers you already approved can get through, so it is safe."
 
-**Step A — Confirm allowed phone numbers:**
+> "Think of it like this: you have already given me a list of VIP contacts. Now I am asking — do you want me to just put their calls through automatically, or do you still want me to buzz you every time?"
 
-> "In the earlier step, we set which phone numbers are allowed to message Claude through WhatsApp. Let me check what we have."
+> "Would you like to turn on automatic replies for WhatsApp?"
 
-Read the `.mcp.json` file in the whatsapp-channel folder and check the `WA_ALLOW_FROM` value.
-
-If `WA_ALLOW_FROM` is empty:
-
-> "Right now, ANYONE who messages your WhatsApp number can talk to Claude. Before I let WhatsApp run on its own, I want to make sure only the right people can reach it."
-
-> "Which phone numbers should be allowed to message Claude? Give me the numbers with the country code — for example, +61412345678 for Australia or +1234567890 for the United States."
-
-Update `WA_ALLOW_FROM` in `.mcp.json` with the numbers they give you.
-
-If `WA_ALLOW_FROM` already has numbers:
-
-> "Good — only these numbers can message Claude through WhatsApp: [list the numbers]. If that looks right, I will go ahead and set up the permissions."
-
-Ask them to confirm.
-
-**Step B — Set WhatsApp to run without permission prompts:**
-
-Once the user has confirmed their allowed numbers, update `~/.claude/settings.json`:
+**If they say yes:**
 
 1. Run `echo $HOME` to get the home directory path.
 2. Read `~/.claude/settings.json`.
-3. Add `"mcp__whatsapp__*"` to the `permissions.allow` array. If the allow array does not exist, create it.
-4. Do NOT remove any existing allow rules — only ADD to them.
+3. Add `"mcp__whatsapp__*"` to the `permissions.allow` array.
+4. Do NOT remove any existing allow rules — only ADD the new one.
+5. Write the file.
 
-The `mcp__whatsapp__*` rule means: "Let WhatsApp read messages and send replies without asking me every time."
+Then say:
 
-**Step C — Explain what you did:**
+> "Done! From now on, when one of your approved contacts sends a WhatsApp message, Claude will read it and reply on its own — no popups."
 
-> "All set! Here is what I did:"
+> "Only the numbers you approved can get through. Nobody else can message Claude."
 
-> "1. Only the phone numbers you approved can message Claude through WhatsApp — nobody else."
-> "2. When one of those approved numbers sends a message, Claude will read it and reply automatically — no popup, no waiting for you to click 'Yes'."
+> "You can change the allowed numbers anytime — just tell me 'update my WhatsApp allowed numbers'."
 
-> "Think of it like this: you have given Claude a list of VIP contacts, and told the receptionist 'if one of these people calls, just put them through.'"
+> "You will need to close Claude Code and reopen it for this to take effect."
 
-> "You can change the allowed numbers anytime — just tell me 'update my WhatsApp allowed numbers' and I will fix it."
+**If they say no:**
 
-⚠️ The user needs to restart Claude Code for this to take effect. Tell them:
-
-> "One last thing — close Claude Code and reopen it so this kicks in. After that, WhatsApp will work on its own."
+> "No problem! You will just need to click 'Yes' on the popup each time a WhatsApp message comes in. If it gets annoying later, just tell me 'let WhatsApp run automatically' and I will set it up."
 
 ---
 
