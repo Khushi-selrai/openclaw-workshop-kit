@@ -493,15 +493,27 @@ If session expired:
 
 Say:
 
-> "One more thing — right now, every time I try to check your Gmail, search Notion, or do anything with your tools, I will ask you 'Do you want to proceed?' and you have to click 'Yes' every single time. That gets annoying fast."
+> "One more thing — right now, every time I try to check your Gmail, search Notion, or do anything with your tools, a popup appears asking 'Do you want to proceed?' and you have to click 'Yes' every single time. That gets annoying fast."
 
 > "I can set it up so I just go ahead and do what you ask without stopping to check with you each time. Think of it like giving your assistant a key to the office instead of buzzing them in every morning."
 
 > "Would you like me to turn that on?"
 
-If they say yes:
+If they say yes, follow these steps EXACTLY:
 
-1. Update the **global settings file** at `~/.claude/settings.json` with:
+**Step A — Get the home directory path:**
+
+Run this command:
+```bash
+echo $HOME
+```
+Save the output (e.g., `/Users/jesie`) — you will use it below.
+
+**Step B — Write the settings file:**
+
+⚠️ CRITICAL: Do NOT just "check" the file and say it is already done. You MUST read the file, verify it contains ALL of the required fields below, and WRITE/OVERWRITE it if ANY field is missing.
+
+Read `~/.claude/settings.json`. Then write the COMPLETE file below, replacing `HOMEDIR` with the actual home directory from Step A:
 
 ```json
 {
@@ -525,24 +537,40 @@ If they say yes:
       "mcp__playwright__*"
     ],
     "additionalDirectories": [
-      "/Users/[username]/whatsapp-channel",
-      "/Users/[username]/workshop-kit",
-      "/Users/[username]/.claude/skills",
-      "/Users/[username]/my-assistant"
+      "HOMEDIR/whatsapp-channel",
+      "HOMEDIR/workshop-kit",
+      "HOMEDIR/.claude/skills",
+      "HOMEDIR/my-assistant"
     ]
   }
 }
 ```
 
-⚠️ Replace `[username]` with the user's actual home folder name. Detect this automatically using `whoami` or `echo $HOME` (Mac) / `echo %USERPROFILE%` (Windows).
+Example: if `echo $HOME` returned `/Users/jesie`, then `"HOMEDIR/whatsapp-channel"` becomes `"/Users/jesie/whatsapp-channel"`.
 
-2. Say:
+**Step C — Verify it worked:**
 
-> "Done! From now on I will just get things done without stopping to ask permission every time. You can always change this later if you want — just tell me 'turn permissions back on' and I will."
+Read `~/.claude/settings.json` again and confirm:
+- ✅ `"defaultMode": "dontAsk"` is present
+- ✅ `"Bash(*)"` is in the allow list
+- ✅ `"mcp__claude_ai_Gmail__*"` is in the allow list
+- ✅ All `HOMEDIR` placeholders have been replaced with the real path
+
+If any of these are missing, fix the file and check again.
+
+**Step D — Tell the user:**
+
+> "Done! I have turned off permission prompts for everything — Gmail, Notion, Airtable, WhatsApp, all of it. From now on, when you ask me to do something, I will just do it."
+
+> "If you ever want to turn it back on, just tell me 'start asking me for permission again' and I will."
+
+⚠️ The user MUST restart Claude Code (close and reopen) for this to take effect. Tell them:
+
+> "One last thing — you need to close Claude Code and reopen it for this to kick in. After that, no more popups."
 
 If they say no:
 
-> "No problem! I will keep checking with you before I do anything. You can always change your mind later — just say 'stop asking me for permission' and I will set it up."
+> "No problem! I will keep checking with you before I do anything. If it ever gets annoying, just say 'stop asking me for permission' and I will set it up for you."
 
 ---
 
