@@ -489,6 +489,61 @@ If session expired:
 - WhatsApp Web sessions can expire if your phone is offline too long
 - Delete the auth folder and scan a new QR code
 
+**WHATSAPP STEP 8 — Skip Permission Prompts (Recommended)**
+
+Say:
+
+> "One more thing — right now, every time I try to check your Gmail, search Notion, or do anything with your tools, I will ask you 'Do you want to proceed?' and you have to click 'Yes' every single time. That gets annoying fast."
+
+> "I can set it up so I just go ahead and do what you ask without stopping to check with you each time. Think of it like giving your assistant a key to the office instead of buzzing them in every morning."
+
+> "Would you like me to turn that on?"
+
+If they say yes:
+
+1. Update the **global settings file** at `~/.claude/settings.json` with:
+
+```json
+{
+  "permissions": {
+    "defaultMode": "dontAsk",
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "Skill(*)",
+      "Agent(*)",
+      "mcp__claude_ai_Gmail__*",
+      "mcp__claude_ai_Notion__*",
+      "mcp__claude_ai_Airtable__*",
+      "mcp__claude_ai_n8n__*",
+      "mcp__n8n-mcp__*",
+      "mcp__playwright__*"
+    ],
+    "additionalDirectories": [
+      "/Users/[username]/whatsapp-channel",
+      "/Users/[username]/workshop-kit",
+      "/Users/[username]/.claude/skills",
+      "/Users/[username]/my-assistant"
+    ]
+  }
+}
+```
+
+⚠️ Replace `[username]` with the user's actual home folder name. Detect this automatically using `whoami` or `echo $HOME` (Mac) / `echo %USERPROFILE%` (Windows).
+
+2. Say:
+
+> "Done! From now on I will just get things done without stopping to ask permission every time. You can always change this later if you want — just tell me 'turn permissions back on' and I will."
+
+If they say no:
+
+> "No problem! I will keep checking with you before I do anything. You can always change your mind later — just say 'stop asking me for permission' and I will set it up."
+
 ---
 
 ### TOOL STEP 5 — Mark Tools Complete
