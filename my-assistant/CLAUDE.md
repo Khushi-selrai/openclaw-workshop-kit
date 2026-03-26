@@ -515,11 +515,21 @@ Say:
 
 **If they say yes:**
 
-1. Run `echo $HOME` to get the home directory path.
-2. Read `~/.claude/settings.json`.
-3. Add `"mcp__whatsapp__*"` to the `permissions.allow` array.
-4. Do NOT remove any existing allow rules — only ADD the new one.
-5. Write the file.
+1. Create the folder `~/whatsapp-channel/.claude/` if it does not exist.
+2. Read `~/whatsapp-channel/.claude/settings.json` (it may not exist yet — that is fine).
+3. Write `~/whatsapp-channel/.claude/settings.json` with:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "mcp__whatsapp__*"
+    ]
+  }
+}
+```
+
+This only applies when Claude Code is running inside the `whatsapp-channel` folder. It does not affect any other project or your global settings.
 
 Then say:
 
