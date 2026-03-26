@@ -1,6 +1,6 @@
 ---
 name: first-run-setup
-description: First-run setup and onboarding for the AI Business Assistant. Use when setup_complete is false in SETUP.md, when skills are missing, when the user says "my setup is broken", "fix my install", or "re-run setup".
+description: First-run setup and onboarding for the AI Business Assistant. Use when setup_complete is false in memory, when skills are missing, when the user says "my setup is broken", "fix my install", or "re-run setup".
 ---
 
 # First Run Setup
@@ -29,7 +29,7 @@ Check if `~/.claude/skills/` has skill directories inside it.
 
 ### Step 2 — Detect Operating System
 
-Detect whether the user is on Mac, Windows, or Linux. Note this for SETUP.md.
+Detect whether the user is on Mac, Windows, or Linux. Save this to memory.
 
 ### Step 3 — Install Node.js
 
@@ -57,21 +57,11 @@ Run: `node --version`
 
 ### Step 4 — Mark Setup Complete
 
-Update `./memory/SETUP.md`:
-
-```markdown
----
-setup_complete: true
-setup_date: [today's date]
-os: [Mac, Windows, or Linux]
----
-
-## Connected Tools
-- [x] Skills installed (94 skills)
-- [ ] Playwright (browser automation)
-- [ ] Google Workspace (Gmail + Calendar)
-- [ ] Telegram notifications
-```
+Save to memory:
+- `setup_complete: true`
+- `setup_date: [today's date]`
+- `os: [Mac, Windows, or Linux]`
+- `skills_installed: 86`
 
 Say:
 > "Everything looks good! Now let me learn a bit about you and your business. I am going to ask 7 quick questions — after this I will remember everything about you."
@@ -82,7 +72,7 @@ Say:
 
 ## PHASE 2 — ONBOARDING
 
-Read `./memory/USER.md`. If `status: not-yet-onboarded` → ask these questions one at a time:
+Check memory for a user profile. If no profile exists → ask these questions one at a time:
 
 1. "What is your first name?"
 2. "What is your business called, and what do you do in one sentence?"
@@ -92,35 +82,7 @@ Read `./memory/USER.md`. If `status: not-yet-onboarded` → ask these questions 
 6. "How do you prefer I communicate — casual and friendly, or professional and direct?"
 7. "What would feel like a win for you from today?"
 
-Save all answers to `./memory/USER.md`:
-
-```markdown
----
-type: user
-status: onboarded
-onboarded: [date]
-os: [their OS]
----
-
-# About [Name]
-
-**Name:** [name]
-**Business:** [business + what they do]
-**Customers:** [who they help]
-**Biggest challenge:** [their problem]
-**Tools:** [their tools]
-**Communication style:** [their preference]
-**Workshop goal:** [what success looks like]
-
-## How to Speak to Them
-[2-3 sentences on exactly how to communicate with this person]
-
-## Always Remember
-- They are on [Mac/Windows]
-- Their business: [business]
-- Their biggest challenge: [challenge]
-- Communication: [style]
-```
+Save all answers to memory as a user profile note covering: name, business, customers, biggest challenge, tools, communication style, workshop goal, and OS. Include a "How to Speak to Them" summary (2-3 sentences) and an "Always Remember" list of key facts.
 
 Say:
 > "Done! I have saved everything. I will always know who you are from now on. Now let me connect the tools that will make me really useful for you."
@@ -221,5 +183,6 @@ Use skills: `brainstorming`, `writing-plans`
 - Windows: Git for Windows needs to be installed. See the workshop Notion page for instructions.
 
 **Permission errors**
-- Mac: Add `sudo` before the command
+- Ask your assistant: "I got a permission error, help me fix it"
+- Mac: try `npm config set prefix ~/.npm-global` and update PATH
 - Windows: Run VS Code as Administrator

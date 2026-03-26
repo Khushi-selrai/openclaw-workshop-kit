@@ -2,7 +2,7 @@
 
 Everything your assistant knows how to do is listed here. Most skills work immediately with no extra setup. A few need a connector (a tool that links your assistant to an outside service).
 
-**25 core skills** are shown first — these are the ones most business owners use most. After those, you will find **61 advanced skills** for deeper work, automation, and technical integrations.
+**22 core skills** are shown first — these are the ones most business owners use most. After those, you will find **56 advanced skills** for deeper work, automation, and technical integrations.
 
 ---
 
@@ -28,10 +28,6 @@ Example: "Write a homepage headline that makes people want to book a call with m
 Creates ready-to-post content for LinkedIn, Instagram, and Facebook.
 Example: "Write 7 LinkedIn posts for this week based on my business."
 
-### Content Creator *(CORE)*
-Writes long blog posts and SEO articles that bring people to your website through Google.
-Example: "Write a 1000-word article about why [industry] businesses need AI."
-
 ### Email Sequence *(CORE)*
 Builds a series of emails that automatically follow up with new leads.
 Example: "Build a 5-email welcome sequence for people who fill in my contact form."
@@ -51,10 +47,6 @@ Example: "Write 5 Facebook ad variations for my [product/service]."
 ### Content Marketer *(CORE)*
 Builds full omnichannel content strategies — what to post, where, and how often.
 Example: "Build a 30-day content marketing plan for my business."
-
-### Social Orchestrator *(ADVANCED)*
-Coordinates content across multiple platforms with consistent messaging and scheduling.
-Example: "Plan a coordinated campaign across LinkedIn, Instagram, and email for my product launch."
 
 ---
 
@@ -102,10 +94,6 @@ Example: "What do small business owners say they hate about their current accoun
 Produces structured competitive and market analysis reports with evidence-based recommendations.
 Example: "Give me a full competitive landscape report on AI automation services in Australia."
 
-### Last 30 Days *(CORE)*
-Finds trending topics, community sentiment, and real-time insights from the past month.
-Example: "What is everyone in the marketing industry talking about right now?"
-
 ### YouTube Summarizer *(ADVANCED)*
 Reads any YouTube video and gives you the key points — without watching it yourself.
 - Requires: YouTube Transcript MCP (your assistant can install this for you)
@@ -123,9 +111,6 @@ Example: "Pull everything you can find about how [competitor] is marketing their
 Measures content performance and campaign ROI across platforms.
 Example: "Which types of content are getting the most engagement in my industry?"
 
-### Competitive Cartographer *(ADVANCED)*
-(See Group B above — also useful for market understanding.)
-
 ### Agentfolio *(ADVANCED)*
 Searches for existing AI agents, tools, and ecosystems to help you find what's already built.
 Example: "What AI agents already exist for automating customer support for small businesses?"
@@ -133,10 +118,6 @@ Example: "What AI agents already exist for automating customer support for small
 ---
 
 ## GROUP D — Saving Time on Writing
-
-### Humanizer *(CORE)*
-Takes any text and rewrites it to sound like a real person wrote it — not a robot.
-Example: "Make this proposal section sound more natural and less AI-ish."
 
 ### Avoid AI Writing *(CORE)*
 Removes 21 categories of robotic AI writing patterns — buzzwords, fillers, and over-formal structure.
@@ -171,7 +152,7 @@ Diagnoses problems and fixes them step by step — nothing stays stuck.
 Example: "Something is not working right — let me describe what happened."
 
 ### Skills Discovery *(CORE)*
-Shows you all 25 core skills with personalised recommendations based on your business.
+Shows you all 22 core skills with personalised recommendations based on your business.
 Example: "What can you do for a business like mine?"
 
 ### Tech Entrepreneur Coach *(CORE)*
@@ -228,10 +209,6 @@ These skills are for attendees who want to build their own AI tools, bots, or wo
 Creates custom agents, skills, and MCP integrations from scratch.
 Example: "Build a custom agent that handles my client intake process automatically."
 
-### AI Agents Architect *(ADVANCED)*
-Designs and builds autonomous AI agents with tool use, memory, and planning.
-Example: "Design an agent that monitors my inbox, flags urgent items, and drafts replies."
-
 ### AI Engineer *(ADVANCED)*
 Builds production LLM applications, RAG systems, and intelligent agents.
 Example: "Help me build a RAG system that answers questions about my knowledge base."
@@ -243,10 +220,6 @@ Example: "Build a Telegram bot that handles customer enquiries for my business."
 ### Claude API *(ADVANCED)*
 Builds custom applications using the Claude API and Anthropic SDK.
 Example: "Help me build a Claude-powered tool for my team."
-
-### MCP Builder *(ADVANCED)*
-Guides you through building an MCP (Model Context Protocol) server for Claude.
-Example: "Build an MCP server that connects my assistant to my CRM."
 
 ### MCP Creator *(ADVANCED)*
 Creates production-ready, secure MCP servers with proper error handling.
@@ -338,14 +311,6 @@ Example: "Help me write tests for this feature before we build it."
 Verifies that work is actually done and passing before marking it complete.
 Example: "Double-check this implementation is correct before I ship it."
 
-### QA *(ADVANCED)*
-Systematically tests web applications for bugs and broken flows.
-Example: "QA test my web app and give me a full bug report."
-
-### Webapp Testing *(ADVANCED)*
-Browser-based testing for web applications using Playwright.
-Example: "Test all the key user flows in my web app."
-
 ### Playwright Skill *(ADVANCED)*
 Full browser automation — writing clean, maintainable Playwright test scripts.
 Example: "Automate the login and checkout flow for my store."
@@ -393,10 +358,6 @@ Example: "Help me resolve this complicated merge conflict."
 ### Finishing a Development Branch *(ADVANCED)*
 Guides the final integration of completed work — tests, review, merge strategy.
 Example: "I've finished this feature — help me integrate it cleanly."
-
-### Systematic Debugging *(ADVANCED)*
-Root-cause analysis and step-by-step fixes for anything that's broken.
-(Also listed in Group E — works equally well for business and technical problems.)
 
 ---
 

@@ -103,11 +103,11 @@ When you run the Gmail or Calendar connection commands, a browser window will op
 4. Done — Claude can now access Gmail and Calendar
 
 ```bash
-# Connect Gmail
-claude mcp add gmail npx @gptscript-ai/gmail-mcp
+# Install Google Workspace tool
+npm install -g @googleworkspace/cli
 
-# Connect Google Calendar
-claude mcp add google-calendar npx @gptscript-ai/google-calendar-mcp
+# Sign in to your Google account
+gws auth login
 ```
 
 > No extra account needed — just your existing Google account.

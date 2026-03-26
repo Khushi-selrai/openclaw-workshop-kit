@@ -13,14 +13,14 @@ WITHOUT SKILLS                    WITH SKILLS
                                   Applies proven outreach frameworks
 Generic email, AI-sounding        Writes personalised, pattern-interrupted
                                   copy with a clear call to action
-                                  Then runs humanizer.md to remove AI tone
+                                  Then runs avoid-ai-writing to remove AI tone
 
 Result: Forgettable               Result: Emails people actually reply to
 ```
 
 ---
 
-## Your 92 Installed Skills
+## Your 86 Installed Skills
 
 Organised by what they do for your business:
 
@@ -28,14 +28,14 @@ Organised by what they do for your business:
 ┌─────────────────────────────────────────────────────────────────┐
 │                    YOUR SKILLS LIBRARY                           │
 ├────────────────────┬────────────────────────────────────────────┤
-│  CONTENT &         │  copywriting, humanizer, avoid-ai-writing  │
-│  WRITING           │  social-content, content-creator           │
-│                    │  content-marketer, direct-response-copy    │
-│                    │  email-sequence, email-composer, ad-creative│
+│  CONTENT &         │  copywriting, avoid-ai-writing             │
+│  WRITING           │  social-content, content-marketer          │
+│                    │  direct-response-copy, email-sequence      │
+│                    │  email-composer, ad-creative               │
 ├────────────────────┼────────────────────────────────────────────┤
 │  RESEARCH &        │  deep-research, research-analyst           │
 │  INTELLIGENCE      │  reddit-insights, competitor-alternatives  │
-│                    │  competitive-cartographer, last30days       │
+│                    │  competitive-cartographer                   │
 │                    │  youtube-summarizer, apify-market-research  │
 │                    │  apify-competitor-intelligence              │
 ├────────────────────┼────────────────────────────────────────────┤
@@ -49,8 +49,8 @@ Organised by what they do for your business:
 │                    │  task-decomposer, personal-finance-coach   │
 │                    │  ai-product, analytics-product             │
 ├────────────────────┼────────────────────────────────────────────┤
-│  AI & AUTOMATION   │  ai-agents-architect, agent-creator        │
-│                    │  n8n-workflow-patterns, mcp-builder        │
+│  AI & AUTOMATION   │  agent-creator, mcp-creator                │
+│                    │  n8n-workflow-patterns                      │
 │                    │  prompt-engineer, skill-creator            │
 │                    │  orchestrator, bot-developer               │
 ├────────────────────┼────────────────────────────────────────────┤
@@ -171,7 +171,7 @@ You stay in control. AI does the work. You make the calls.
 ```
 TODAY (Workshop)
   ✅ Claude Code set up on your laptop
-  ✅ 94 skills installed
+  ✅ 86 skills installed
   ✅ Memory of your business saved
   ✅ Browser automation connected
   ✅ First real task done live
