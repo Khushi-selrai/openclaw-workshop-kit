@@ -1,0 +1,99 @@
+# Workshop Optimizer Skill
+
+## Overview
+This skill helps improve Claude Code workshops by identifying:
+- The best teaching sequence
+- Common beginner confusion points
+- High-impact demo flows
+- Fastest path to business value
+
+---
+
+## Purpose
+To ensure workshops are:
+- Smooth and easy to follow
+- High-value for non-technical users
+- Focused on real business outcomes
+
+---
+
+## Key Insights
+
+### 1. Best Workshop Flow (Recommended Order)
+
+1. Claude Code Setup (terminal basics)
+2. First success moment (simple output)
+3. Guided build (interactive system)
+4. Real business use-case demo
+5. Optional installs (advanced features)
+
+---
+
+### 2. Common Beginner Issues
+
+- Terminal fear / confusion
+- Environment setup failures
+- Not understanding what Claude Code is doing
+- Copy-paste errors
+- Overwhelmed by too many tools
+
+---
+
+### 3. “Wow Moment” Triggers
+
+- Seeing working output quickly
+- Building something in under 10 minutes
+- Real business use-case (lead capture, automation)
+- AI responding intelligently
+
+---
+
+### 4. Best Demo Types
+
+- Lead qualification agent
+- Content generator
+- Simple automation system
+- CLI-based AI assistant
+
+---
+
+### 5. Business Value Mapping
+
+| Pain Point           | Workshop Demo                     |
+|---------------------|----------------------------------|
+| Lead generation     | AI lead qualification bot        |
+| Inbox overload      | Auto-response assistant          |
+| Content creation    | AI content generator             |
+| Follow-ups          | Automated messaging logic        |
+| Admin work          | CLI automation tools             |
+
+---
+
+## Recommendations
+
+- Start simple, then expand
+- Avoid complex integrations early
+- Focus on immediate results
+- Always tie demos to business outcomes
+
+---
+
+## Optional Install Strategy
+
+Optional installs should:
+- Be introduced at the END of workshop
+- Focus on business-ready systems
+- Include:
+  - Messaging integrations
+  - Automation workflows
+  - CRM extensions (future)
+
+---
+
+## Usage
+
+Use this skill to:
+- Design better workshops
+- Improve demo structure
+- Reduce support issues
+- Increase client satisfaction
